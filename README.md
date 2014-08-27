@@ -1,6 +1,6 @@
 # Nite-Out
 
-> Pithy project description
+> Tired of using multiple sites to plan your night? Nite-Out is your one-stop-shop for people looking to spend a night out on the town. 
 
 ## Team
 
@@ -20,15 +20,16 @@
 
 ## Usage
 
-> Some usage instructions
+> Go to the site, pick a primary event, then pick a secondary event based on the primary event's schedule (time, length, etc.)
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Angular
+- Mongo (tbd)
+- Google API
+- Open Table API
+- Fandango API
+- Yelp API
 
 ## Development
 
@@ -44,7 +45,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/NiteOut/nite-out/issues)
 
 
 ## Contributing
