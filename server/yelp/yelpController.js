@@ -10,9 +10,10 @@ var yelp = Yelp.createClient({
 
 module.exports = {
   fetchBusiness: function(req, res, next) {
-    name = req.query.name;
+    var name = req.query.name;
+    var location = req.query.location;
 
-    yelp.business(name, function(error, data) {
+    yelp.business(name + '-' + location, function(error, data) {
       res.json(data);
     });
   }
