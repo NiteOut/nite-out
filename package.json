@@ -15,7 +15,12 @@
     "type": "git",
     "url": "https://github.com/niteout/nite-out"
   },
-  "author": "",
+  "authors": [
+    "Issaq Al-Ahmed <iAL-Ahmed>",
+    "Jarrod Ruhland <jangahroo>",
+    "Jimmy Jea <jimjea>",
+    "Kim Marquardt <robotBones>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/niteout/nite-out/issues"
