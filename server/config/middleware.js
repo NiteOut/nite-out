@@ -12,5 +12,5 @@ module.exports = function(app, express) {
   app.use('/api/yelp', yelpRouter);
   
   require('../movies/movieRoutes.js')(movieRouter);
-  require('../yelp/yelpRoutes.js')(movieRouter);
+  require('../yelp/yelpRoutes.js')(yelpRouter);
 };
