@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.6.6",
-    "express": "^4.8.6"
+    "express": "^4.8.6",
+    "showtimes": "^0.3.0"
   },
   "devDependencies": {},
   "scripts": {
