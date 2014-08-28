@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "homepage": "https://github.com/niteout/nite-out",
   "authors": [
-    "Jarrod Ruhland <jarrod.ruhland@gmail.com>"
+    "Issaq Al-Ahmed <iAL-Ahmed>",
+    "Jarrod Ruhland <jangahroo>",
+    "Jimmy Jea <jimjea>",
+    "Kim Marquardt <robotBones>"
   ],
   "main": "index.js",
   "moduleType": [
