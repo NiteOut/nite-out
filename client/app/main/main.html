@@ -1,0 +1,10 @@
+<div id='container'>
+  <div class='searchBar'>
+    <form name='mainSearchBar' ng-submit='storeInputInFactory' novalidate>
+      <input name='searchText' type='text' ng-model='input' placeholder='Enter your search here!'/>
+    </form>
+  </div>
+  <div class='firstView' ui-view></div>
+  <div class='secondView' ui-view></div>
+</div>
+

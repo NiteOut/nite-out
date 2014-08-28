@@ -1,6 +1,7 @@
 node_modules/
 bower_components/
 *.log
+client/bower_components
 
 build/
 dist/
