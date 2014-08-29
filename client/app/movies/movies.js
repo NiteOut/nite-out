@@ -1,4 +1,5 @@
 angular.module('nite-out.movies', ['ui.router'])
+
 .config(function($stateProvider) {
   $stateProvider
     .state('main.movies', {
@@ -8,10 +9,10 @@ angular.module('nite-out.movies', ['ui.router'])
     });
 })
 
-.controller('MoviesController', function($scope, Movies){
-  $scope.theaters = Movies.theaters;
 
+.controller('MoviesController', function($scope, Movies){
   Movies.getTheaters(94518);
-//parse out the show times from the
+
+  $scope.theaters = Movies.theaters;
 });
 

@@ -1,11 +1,11 @@
+<!-- This is the main view that is injected into the index.html ui-view -->
 <div id='container'>
   <div class='searchBar'>
     <form name='mainSearchBar' ng-submit='renderPage()' novalidate>
       <input name='searchText' type='text' ng-model='input' placeholder='Enter your search here!'/>
     </form>
 
-
-
+  <!-- This subview will take injections from different modules (i.e. movies) -->
   <div ui-view></div>
 
 
