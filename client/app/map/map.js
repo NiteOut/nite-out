@@ -1,26 +1,32 @@
 // map module
 angular.module('nite-out.map', [])
 
-// configure routes
 // .config(function($stateProvider, $urlRouterProvider) {
 //   $stateProvider
 //     .state('nite-out.map', {
 //       url: "/",
-//       templateUrl: "map-list.html",
-//       controller: function($scope) {
-//         // $scope.stuff = [];
+//       templateUrl: "map.html",
+//       controller: function($scope, gmap) {
+//         $scope.logPlaces = function(zipcode){
+//           gmap.findPlaces(zipcode, gmap.map, 500);
+//         };
 //       }
 //     })
-// });
+// })
+.controller('gmapController', function($scope, gmap){
+  $scope.logPlaces = function(zipcode){
+    gmap.findPlaces(zipcode, gmap.map, 15000);
+  };
+})
 .factory('gmap', function(){
 
   var locations = [];
+  var mapDomID = 'nite-out-map';
 
   // initialize takes a longitude and latitude to produce a map which it appends to the DOM with hard coded mapDomID.
   // place = (google longitude/latitude object)
-  var initialize = function(latLng){
+  var initialize = function(latLng, cb){
     if(google){
-      var mapDomID = 'nite-out-map';
       var pointOfInterest = new google.maps.LatLng(latLng.latitude, latLng.longitude);
       var clientLocation;
       var map;
@@ -51,20 +57,46 @@ angular.module('nite-out.map', [])
         map: map, // google map instance
         icon: "http://maps.google.com/mapfiles/ms/micons/movies.png"//'client/app/map/cinema.png'
       });
+
+      // give access to map object
+      cb(map);
     }
   }
-  // this is like $(document).ready
-  // google.maps.event.addDomListener(window, 'load', initialize);
 
-  // service = new google.maps.places.PlacesService(map);
-  // service.nearbySearch(request, callback);
+  var findPlaces = function(center, map, radius, cb){
+    locations = [];
+    console.log('in findPlaces', center, map, radius, cb);
+    getLatLng(center, function(latLng){
+      var center = new google.maps.LatLng(latLng.latitude, latLng.longitude);
+      radius = radius || 15000;
+
+      var request = {
+        location: center,
+        radius: radius,
+        types: ['restaurant']
+      }
+
+      service = new google.maps.places.PlacesService(map);
+
+      service.nearbySearch(request, function(results, status) {
+        console.log(status);
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            locations.push(place);
+            //createMarker(results[i]);
+          }
+        }
+        console.log(locations);
+      });
+    });
+  };
 
 
   // produce google map latLng object from a zipcode
   // this is call to google api so i's asynchronous
   // getLatLng is primarily a helper for makeMap()
   var getLatLng = function(someAddress, cb){
-    console.log('in getlatLng');
     var latLng = {};
     // gecoder takes { address: string } as input
     someAddress = { address: someAddress };
@@ -75,6 +107,10 @@ angular.module('nite-out.map', [])
         latLng.longitude = response[0].geometry.location.lng();
         if(typeof cb === 'function'){
           cb(latLng);
+          // latLng should be {
+          //                  longitude: number
+          //                   laatitude: number
+          //                }
         } else {
           alert('address was not geocoded');
         }
@@ -82,34 +118,60 @@ angular.module('nite-out.map', [])
     });
   };
 
-  var makeMap = function(location){
-    console.log('in make map');
+  // Factory interface for producing a map on the DOM
+  // location is expected to be a string
+  var makeMap = function(location, cb){
     getLatLng(location, function(latLng){
-      initialize(latLng);
+      initialize(latLng, function(map){
+        // passing access to map object
+        cb(map);
+      });
     });
   };
 
   // gmap factory api
   return {
     makeMap: makeMap,
-    locations: locations
+    findPlaces: findPlaces,
+    locations: locations,
+    map: 'wtf'
   }
 })
 
 .directive('gMap', function gMapDirective(gmap){
 
   return {
-    restrict: 'EA',
-    scope: {event: "@location"},
+    restrict: 'E',
+    scope: {
+      event: "@location",
+      visible: "@"
+    },
     templateUrl: 'map.html',
-    // controller: 'mapController',
-    // controllerAs: 'map',
+    // controller: function($scope, gmap) {
+    //   $scope.logPlaces = function(zipcode){
+    //     console.log('clicking');
+    //     gmap.findPlaces(zipcode, gmap.map, 500);
+    //   };
+    // },
 
-    link: function($scope){
-      console.log($scope);
-      gmap.makeMap($scope.event);
+    link: function(scope, element){
+      // async operation
+      gmap.makeMap(scope.event, function(map){
+        // I think I'm giving the gmap factory a reference to this particular map object
+        gmap.map = map;
+        // scope visible comes from directive from html
+        if(scope.visible !== 'true'){
+          element.addClass('invisible')
+        }
+      });
     }
   };
 });
 
-// <g-map event="{{search.value}}"></g-map>
+// .directive('placeList', function placeList(gmap){
+//   return {
+//     restrict: 'E',
+
+//     link: function(scope, element){}
+//   };
+// });

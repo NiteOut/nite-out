@@ -1,7 +1,7 @@
 
 <!-- page intended to test map in isolation -->
 <!DOCTYPE html>
-<html>
+<html ng-app='nite-out.map'>
 <head>
   <meta charset="utf-8" />
   <title>Nite-Out</title>
@@ -15,10 +15,10 @@
 </head>
 <!-- loading map module and it's factory -->
 <body ng-app='nite-out.map'>
-  <h1>Nite-Out</h1>
+  <h1 ng-controller="gmapController" ng-click="logPlaces('94040')">Nite-Out</h1>
   <!-- <div ui-view></div> -->
 
-  <g-map location="94040"></g-map>
+  <g-map location="94040" visible='true'></g-map>
 
 
 

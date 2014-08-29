@@ -10,3 +10,7 @@ body {
   width: 50%;
   height: 50%;
 }
+
+.invisible {
+  visibility: hidden;
+}
