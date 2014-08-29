@@ -147,12 +147,6 @@ angular.module('nite-out.map', [])
       visible: "@"
     },
     templateUrl: 'map.html',
-    // controller: function($scope, gmap) {
-    //   $scope.logPlaces = function(zipcode){
-    //     console.log('clicking');
-    //     gmap.findPlaces(zipcode, gmap.map, 500);
-    //   };
-    // },
 
     link: function(scope, element){
       // async operation
@@ -167,11 +161,3 @@ angular.module('nite-out.map', [])
     }
   };
 });
-
-// .directive('placeList', function placeList(gmap){
-//   return {
-//     restrict: 'E',
-
-//     link: function(scope, element){}
-//   };
-// });
