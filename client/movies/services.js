@@ -1,12 +1,13 @@
 angular.module('nite-out.movies', [])
 
-.factory('Movies', function($http, $location){
+.factory('Movies', function($http){
   var theaters = [];
 
-  var getTheaters = function() {
+  var getTheaters = function(zipcode) {
     return $http({
       method: 'GET',
-      url: '/api/movies'
+      url: '/api/movies',
+      params: {zipcode: zipcode}
     })
     .then(function(resp) {
       theaters = resp.data.results;
