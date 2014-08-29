@@ -4,5 +4,7 @@ bower_components/
 client/bower_components
 .DS_Store
 client/.DS_Store
+keys.js
+
 build/
 dist/
