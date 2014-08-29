@@ -1,6 +1,9 @@
 node_modules/
 bower_components/
 *.log
+client/bower_components
+.DS_Store
+client/.DS_Store
 keys.js
 
 build/
