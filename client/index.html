@@ -3,13 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <title>Nite-Out</title>
-<!--   <link rel="stylesheet" type="text/css" href="styles/style.css" /> -->
-  <style type="text/css">
-  div {
-    border: 1px solid black;
-  }
-  </style>
+  <!-- <link rel="stylesheet" type="text/css" href="styles/style.css" /> -->
 </head>
+<!-- ng-app is set to the primary module in app.js -->
 <body ng-app='nite-out'>
   <h1>Nite-Out</h1>
 
@@ -17,7 +13,7 @@
   <div ui-view></div>
 
 
-
+  <!-- inject all module js files into the index html -->
   <script src="app/bower_components/angular/angular.js"></script>
   <script src="app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="app/movies/movies.js"></script>
