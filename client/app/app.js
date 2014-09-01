@@ -5,7 +5,7 @@ angular.module('nite-out', [
   'nite-out.events',
   'nite-out.eventFactory',
   'nite-out.movieFactory',
-  'nite-out.restaurant',
+  'nite-out.restaurants',
   'nite-out.restaurantFactory',
   'ui.router'
 ])

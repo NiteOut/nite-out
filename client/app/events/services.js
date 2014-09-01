@@ -12,7 +12,6 @@ angular.module('nite-out.eventFactory', [])
       }
     })
     .then(function(res) {
-      console.log(res);
       res.data.results.forEach(function(item) {
         events.push(item);
       });

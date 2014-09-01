@@ -11,6 +11,6 @@ angular.module('nite-out.movies', ['ui.router'])
 .controller('MoviesController', function($scope, Movies){
   $scope.theaters = Movies.theaters;
 
-  Movies.getTheaters(92870);
+  Movies.getTheaters(94102);
 });
 
