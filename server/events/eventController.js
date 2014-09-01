@@ -1,0 +1,1 @@
+var Eventbrite = require('eventbrite');
