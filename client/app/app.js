@@ -2,7 +2,7 @@ angular.module('nite-out', [
   'nite-out.main',
   'nite-out.movies',
   'nite-out.movieFactory',
-  'nite-out.restaurant',
+  'nite-out.restaurants',
   'nite-out.restaurantFactory',
   'nite-out.events',
   'nite-out.eventFactory',
