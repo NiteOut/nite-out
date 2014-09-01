@@ -13,8 +13,8 @@ angular.module('nite-out', [
   'ui.router'
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/main');
-});
+}]);
 
 
