@@ -26,7 +26,7 @@ module.exports = function(app, express) {
   app.use('/api/movies', movieRouter);
   app.use('/api/yelp', yelpRouter);
   app.use('/users', userRouter);
-  app.user('/api/events', eventRouter);
+  app.use('/api/events', eventRouter);
 
   app.get('/*', function(req, res) {
     res.redirect('/');
