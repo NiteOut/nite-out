@@ -1,15 +1,18 @@
-<style>
-  .angular-google-map-container { height: 400px; width: 400px; }
-</style>
-<google-map center="map.center" zoom="map.zoom"></google-map>
+<div id='mapWrapper'>
 
-<div class='.map-list'>
+  <style>
+    .angular-google-map-container { height: 400px; width: 400px; }
+    .item-text { color: blue; cursor: pointer; }
+  </style>
 
-  <div class='.map-list-item' ng-repeat='place in places'>
-    <div class='.info-item'>
-      <div class='.title-item'>{{ place.title }}</div>
-      <div class='.address-item'>{{ place.address }}</div>
-      <div class='.distance-item'>{{ place.distance }}</div>
+  <google-map id='google-map' center="map.center" zoom="map.zoom"></google-map>
+
+  <div class='.map-list'>
+    <div class='.map-list-item' ng-repeat='place in places'>
+      <div class='.info-item'>
+        <div class='.title-item'><span>{{ place.title }}</span></div>
+        <div ng-click='setCenter(place.address)' class='.address-item'><span class='item-text'>{{ place.address }}</span></div>
+      </div>
     </div>
   </div>
 
