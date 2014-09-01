@@ -11,6 +11,12 @@ angular.module('nite-out.restaurants', ['ui.router'])
 .controller('RestaurantsController', function($scope, Restaurants){
   $scope.restaurants = Restaurants.restaurants;
 
-  Restaurants.getRestaurants(92870);
+  $scope.getInfo = function() {
+    console.log(this.restaurant);
+    var data = {name: this.restaurant.name, location: this.restaurant.city};
+    Restaurants.getInfo(data);
+  };
+
+  Restaurants.getRestaurants(94102);
 });
 

@@ -1,8 +1,11 @@
 <h1>Restaurants</h1>
 <div>
-  <div class='restaurants'>
-    <div class='restaurant' ng-repeat='restaurant in restaurants'>
-      {{restaurant.name}}
+  <div class="restaurants" ng-repeat="restaurant in restaurants">
+    <div class="restaurant">
+      <div ng-click="getInfo()">{{restaurant.name}}</div>
+      <div>Phone Number: {{restaurant.phone}}</div>
+      <div>Address: {{restaurant.address}}, {{restaurant.city}}, {{restaurant.postal_code}} </div>
     </div>
   </div>
 </div>
+
