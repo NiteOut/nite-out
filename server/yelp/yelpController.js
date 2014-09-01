@@ -1,5 +1,4 @@
 // Yelp API is used in fetching secondary data upon user request.
-
 var Yelp = require('yelp');
 var keys = require('../../keys.js');
 
