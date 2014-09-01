@@ -1,14 +1,14 @@
 angular.module('nite-out.restaurants', ['ui.router'])
-.config(function($stateProvider) {
+.config(['$stateProvider', function($stateProvider) {
   $stateProvider
     .state('main.restaurants', {
       url: '/restaurants',
       templateUrl: 'app/restaurants/restaurants.html',
       controller: 'RestaurantsController'
     });
-})
+}])
 
-.controller('RestaurantsController', function($scope, Restaurants){
+.controller('RestaurantsController', ['$scope', 'Restaurants', function($scope, Restaurants){
   $scope.restaurants = Restaurants.restaurants;
 
   $scope.getInfo = function() {
@@ -18,5 +18,5 @@ angular.module('nite-out.restaurants', ['ui.router'])
   };
 
   Restaurants.getRestaurants(94102);
-});
+}]);
 
