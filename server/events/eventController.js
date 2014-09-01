@@ -10,7 +10,6 @@ module.exports = {
       within: 25,
       keywords: req.query.keyword,
       postal_code: req.query.zip,
-      category: req.query.category,
       max: 25
     };
 
