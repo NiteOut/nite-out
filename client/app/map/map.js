@@ -61,7 +61,7 @@ angular.module('nite-out.map', [])
       // give access to map object
       cb(map);
     }
-  }
+  };
 
   var findPlaces = function(center, map, radius, cb){
     locations = [];
@@ -74,7 +74,7 @@ angular.module('nite-out.map', [])
         location: center,
         radius: radius,
         types: ['restaurant']
-      }
+      };
 
       service = new google.maps.places.PlacesService(map);
 
@@ -135,7 +135,7 @@ angular.module('nite-out.map', [])
     findPlaces: findPlaces,
     locations: locations,
     map: 'wtf'
-  }
+  };
 })
 
 .directive('gMap', function gMapDirective(gmap){
@@ -155,7 +155,7 @@ angular.module('nite-out.map', [])
         gmap.map = map;
         // scope visible comes from directive from html
         if(scope.visible !== 'true'){
-          element.addClass('invisible')
+          element.addClass('invisible');
         }
       });
     }
