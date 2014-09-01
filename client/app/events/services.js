@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.eventFactory', [])
 
 .factory('Events', function($http){
