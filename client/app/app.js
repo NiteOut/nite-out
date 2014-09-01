@@ -4,6 +4,7 @@ angular.module('nite-out', [
   'nite-out.main',
   'nite-out.movies',
   'nite-out.map',
+  'nite-out.mapFactory',
   'nite-out.events',
   'nite-out.eventFactory',
   'nite-out.movieFactory',
