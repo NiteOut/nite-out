@@ -2,7 +2,6 @@
 // All middleware installation and router
 // injection happens here
 //////////////////////////////////////////
-
 var bodyParser = require('body-parser');
 
 module.exports = function(app, express) {
