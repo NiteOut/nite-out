@@ -1,5 +1,3 @@
-var crypto = require('crypto');
-var bcrypt = require('bcrypt');
 var db = require('../config/db.js');
 var User = require('./userModel.js');
 var Users = require('./userCollection.js');
