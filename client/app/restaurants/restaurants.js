@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.restaurants', ['ui.router'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider
