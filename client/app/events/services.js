@@ -8,11 +8,12 @@ angular.module('nite-out.eventFactory', [])
       method: 'GET',
       url: '/api/events',
       params: {
-        zip: zipcode,
+        zipcode: zipcode,
       }
     })
-    .then(function(resp) {
-      resp.data.results.forEach(function(item) {
+    .then(function(res) {
+      console.log(res);
+      res.data.results.forEach(function(item) {
         events.push(item);
       });
     });
