@@ -41,6 +41,11 @@ From within the root directory:
 sudo npm install -g bower
 npm install
 bower install
+brew install mysql
+
+mongod
+mysql.server start
+gulp
 ```
 
 ### Roadmap
