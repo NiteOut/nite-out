@@ -1,6 +1,8 @@
-<h1>Theaters</h1>
+<h1>Events</h1>
 <div class='events'>
   <div class='event' ng-repeat='event in events'>
-    {{event.name}}
+    <div>{{event.event.title}}</div>
+    <p>{{event.event.organizer.description}}</p>
+    <div>{{event.event.organizer.url}}</div>
   </div>
 </div>
