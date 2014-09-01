@@ -12,6 +12,7 @@ module.exports = function(app, express) {
   // in the api without cluttering our middleware file
   var movieRouter = express.Router();
   var yelpRouter = express.Router();
+  var userRouter = express.Router();
 
   // Inject all middleware dependencies that will be used
   // in all routes
@@ -23,6 +24,7 @@ module.exports = function(app, express) {
   // Wildcard is defined last in order to route to index
   app.use('/api/movies', movieRouter);
   app.use('/api/yelp', yelpRouter);
+  app.use('/users', userRouter);
 
   app.get('/*', function(req, res) {
     res.redirect('/');
@@ -32,4 +34,5 @@ module.exports = function(app, express) {
   // the individual router that handles its routing.
   require('../movies/movieRoutes.js')(movieRouter);
   require('../yelp/yelpRoutes.js')(yelpRouter);
+  require('../users/userRoutes.js')(userRouter);
 };

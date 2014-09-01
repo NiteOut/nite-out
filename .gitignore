@@ -9,6 +9,5 @@ keys.js
 pids
 *.pid
 *.seed
-
 build/
 dist/

@@ -12,7 +12,7 @@
     "mysql": "^2.4.3",
     "showtimes": "^0.3.0",
     "yelp": "^0.1.1",
-    "bcrypt": "^0.8.0",
+    "bcrypt": "^0.8.0"
   },
   "devDependencies": {
     "karma": "^0.12.23",
@@ -25,8 +25,7 @@
     "gulp-watch": "^0.6.10",
     "jshint-stylish": "^0.4.0",
     "gulp-karma": "^0.0.4"
-    
-    },
+  },
   "scripts": {
     "test": "gulp test"
   },
