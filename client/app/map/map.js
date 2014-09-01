@@ -1,3 +1,5 @@
+'use strict';
+
 // map module
 angular.module('nite-out.map', ['ui.router','google-maps'])
 
@@ -11,8 +13,6 @@ angular.module('nite-out.map', ['ui.router','google-maps'])
 })
 
 .controller('mapController', function($scope, Mapper, Movies){
-
-
   $scope.places;
 
   // let $scope.map be the initial interface object for the google-map directive
@@ -24,13 +24,12 @@ angular.module('nite-out.map', ['ui.router','google-maps'])
   $scope.setCenter = function(address){
     // async Geocoder API call
     Mapper.setCenter(address);
-  }
+  };
 
   $scope.select = function(place){
     $scope.setCenter(place.vicinity);
     window.scrollTo(0,0);
     console.log("you selected", place.name);
-
   };
 
   // takes args: ("type of establishment", optional radius in meters, optional callback())
