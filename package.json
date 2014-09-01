@@ -6,25 +6,29 @@
   "dependencies": {
     "body-parser": "^1.6.6",
     "express": "^4.8.6",
+    "bookshelf": "^0.7.7",
+    "knex": "^0.6.22",
     "mongoose": "^3.8.15",
+    "mysql": "^2.4.3",
     "showtimes": "^0.3.0",
-    "yelp": "^0.1.1"
+    "yelp": "^0.1.1",
+    "bcrypt": "^0.8.0",
   },
   "devDependencies": {
+    "karma": "^0.12.23",
     "gulp": "^3.8.7",
     "gulp-concat": "^2.3.4",
-    "gulp-jshint": "^1.8.4",
-    "gulp-karma": "0.0.4",
     "gulp-livereload": "^2.1.1",
+    "gulp-jshint": "^1.8.4",
     "gulp-nodemon": "^1.0.4",
     "gulp-uglify": "^1.0.0",
     "gulp-watch": "^0.6.10",
     "jshint-stylish": "^0.4.0",
-    "karma": "^0.12.23",
-    "tiny-lr": "^0.1.1"
-  },
+    "gulp-karma": "^0.0.4"
+    
+    },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
