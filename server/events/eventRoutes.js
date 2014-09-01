@@ -1,4 +1,4 @@
-// Import eventController methods for actual event handling.
+// Defer to eventController methods for actual event handling.
 // Here we define all relevant routes on /api/events.
 var eventController = require('./eventController.js');
 
