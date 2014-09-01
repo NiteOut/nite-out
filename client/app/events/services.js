@@ -2,8 +2,7 @@
 
 angular.module('nite-out.eventFactory', [])
 
-.factory('Events', function($http){
-  
+.factory('Events', ['$http', function($http){
   var events = [];
 
   var getEvents = function(zipcode) {
@@ -26,4 +25,4 @@ angular.module('nite-out.eventFactory', [])
     getEvents: getEvents
   };
   
-});
+}]);

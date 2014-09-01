@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.events', ['ui.router'])
 .config(function($stateProvider) {
   $stateProvider
