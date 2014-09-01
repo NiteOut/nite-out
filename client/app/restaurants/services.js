@@ -2,7 +2,7 @@
 
 angular.module('nite-out.restaurantFactory', [])
 
-.factory('Restaurants', function($http){
+.factory('Restaurants', ['$http', function($http){
   var restaurants = [];
 
   var getRestaurants = function(zipcode) {
@@ -35,4 +35,4 @@ angular.module('nite-out.restaurantFactory', [])
     getRestaurants: getRestaurants,
     getInfo: getInfo
   };
-});
+}]);
