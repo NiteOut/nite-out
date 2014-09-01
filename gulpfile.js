@@ -1,12 +1,12 @@
+'use strict';
+
 var gulp = require('gulp');
-var concat = require('gulp-concat');
-var karma = require('gulp-karma');
-var refresh = require('gulp-livereload');
-var client = require('tiny-lr')();
 var nodemon = require('gulp-nodemon');
-var uglify = require('gulp-uglify');
+var refresh = require('gulp-livereload');
 var jshint = require('gulp-jshint');
 var watch = require('gulp-watch');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 var paths = {
   scripts: ['client/app/**/*.js'],
@@ -15,48 +15,54 @@ var paths = {
   test: ['specs/**/*.js']
 };
 
-gulp.task('test', function() {
-
+gulp.task('concat', function() {
+  gulp.src([
+    './client/bower_components/angular/angular.js',
+    './client/bower_components/angular-ui-router/release/angular-ui-router.js',
+    './client/bower_components/lodash/dist/lodash.underscore.js',
+    './client/bower_components/angular-google-maps/dist/angular-google-maps.js',
+    './client/app/**/*.js'
+    ])
+    .pipe(concat('build.js'))
+    .pipe(gulp.dest('./client/build/'));
 });
 
-gulp.task('live', function () {
-  client.listen(35729, function (err) {
-    if(err) {
-      console.error(err);
-    }
-  });
-});
-
-gulp.task('lint', function () {
-  return gulp.src(paths.scripts)
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(refresh(client));
+gulp.task('compress', function() {
+  gulp.src('client/build/build.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('client/dist'));
 });
 
 gulp.task('serve', function() {
   nodemon({script: 'index.js', ignore: 'node_modules/**/*.js'})
-      .on('restart', function () {
-        refresh(client);
-      });
+    .on('restart', function () {
+      refresh();
+    });
+});
+
+gulp.task('lint', function() {
+  return gulp.src(paths.scripts)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(refresh());
 });
 
 gulp.task('html', function () {
   return gulp.src(paths.html)
-    .pipe(refresh(client));
+    .pipe(refresh());
 });
 
 gulp.task('styles', function () {
   return gulp.src(paths.styles)
-    .pipe(refresh(client));
+    .pipe(refresh());
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
+
   gulp.watch(paths.scripts, ['lint']);
   gulp.watch(paths.html, ['html']);
   gulp.watch(paths.styles, ['styles']);
 });
 
-gulp.task('default', ['lint', 'live', 'serve', 'watch']);
-
-// gulp.task('build', ['lint', 'test', 'concat', 'uglify']);
+gulp.task('default', ['lint', 'serve', 'watch']);
+gulp.task('build', ['lint', 'concat', 'compress']);
