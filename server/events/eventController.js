@@ -27,8 +27,8 @@ module.exports = {
     Eventbrite.event_search(params, function(error, data) {
       if (error) {
         console.log(error);
-        res.writeHead(400);
-        res.end();
+        res.writeHead(500);
+        res.send('There was an error processing the request');
       } else {
         // Eventbrite API returns a summary in the first position
         // of its results, we strip it out before returning that
