@@ -1,4 +1,4 @@
-// Defer to movieController methods for actual event handling.
+// Defer to movieController methods for handling API requests.
 var movieController = require('./movieController.js');
 
 module.exports = function(app) {
