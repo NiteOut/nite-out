@@ -1,10 +1,14 @@
 node_modules/
 bower_components/
+logs
 *.log
 client/bower_components
 .DS_Store
 client/.DS_Store
 keys.js
+pids
+*.pid
+*.seed
 
 build/
 dist/
