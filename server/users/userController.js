@@ -60,7 +60,10 @@ module.exports = {
           });
           newUser.save()
             .then(function(newUser) {
+              // Add the user to the collection of users.
               Users.add(newUser);
+              // Send created response to trigger client application to
+              // issue an authorization token.
               res.writeHead(201);
               res.end();
             });
