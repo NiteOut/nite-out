@@ -8,9 +8,9 @@ module.exports = {
   fetchEvents: function(req, res, next) {
     var params = {
       within: 25,
-      keywords: req.query.keyword,
-      postal_code: req.query.zip,
-      max: 25
+      keywords: req.query.keyword || 'concert',
+      postal_code: req.query.zipcode,
+      max: 10
     };
 
     Eventbrite.event_search(params, function(error, data) {
@@ -18,7 +18,7 @@ module.exports = {
         console.log(error);
         res.send('An error occurred');
       } else {
-        res.json(data);
+        res.json({results: data.events.slice(1)});
       }
     });
   }
