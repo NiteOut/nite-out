@@ -1,4 +1,4 @@
-// We must define a collection for bookshelf to handle all events
+// Define a collection for bookshelf to handle all events
 // regarding to accessing one or more users.  This enables us to
 // update or save to the database.
 var db = require('../config/db.js');
