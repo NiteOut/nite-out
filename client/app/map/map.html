@@ -1,13 +1,15 @@
-
-<div id='nite-out-map'></div>
+<style>
+  .angular-google-map-container { height: 400px; width: 400px; }
+</style>
+<google-map center="map.center" zoom="map.zoom"></google-map>
 
 <div class='.map-list'>
 
   <div class='.map-list-item' ng-repeat='place in places'>
     <div class='.info-item'>
-      <div class='.title-item'>{{ mapListItem.title }}</div>
-      <div class='.address-item'>{{ mapListItem.address }}</div>
-      <div class='.distance-item'>{{ mapListItem.distance }}</div>
+      <div class='.title-item'>{{ place.title }}</div>
+      <div class='.address-item'>{{ place.address }}</div>
+      <div class='.distance-item'>{{ place.distance }}</div>
     </div>
   </div>
 
