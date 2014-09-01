@@ -24,5 +24,5 @@ angular.module('nite-out.eventFactory', [])
     events: events,
     getEvents: getEvents
   };
-  
+
 }]);
