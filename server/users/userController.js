@@ -68,6 +68,8 @@ module.exports = {
               res.end();
             });
         } else {
+          // Send bad request header and inform the client that the user
+          // already exists.
           res.writeHead(400);
           res.send('Account already exists');
         }
