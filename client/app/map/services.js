@@ -79,7 +79,8 @@ angular.module('nite-out.mapFactory', [])
     },
 
     options: {
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      scrollwheel: false,
     },
 
     events: {

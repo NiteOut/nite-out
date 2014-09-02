@@ -26,8 +26,7 @@ angular.module('nite-out.events', ['ui.router', 'google-maps'])
   // setting map options through the google-map directive interface
   $scope.setCenter = function(event){
     // async Geocoder API call
-    var address = event.event.venue.address + ',' + event.event.venue.city;
-    Mapper.setCenter(address);
+    Mapper.setCenter(event.address);
   };
 
 }]);

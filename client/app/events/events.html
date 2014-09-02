@@ -1,7 +1,7 @@
 <h3>Events</h3>
   <center>
     <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-      <markers models="events" coords="'self'"></markers>
+      <markers models="events" coords="'self'" fit="'true'"></markers>
     </google-map>
   </center>
 <div class="event" ng-repeat="event in events">
@@ -11,7 +11,5 @@
     <span class="time">{{event.date}}</span></br>
     <div>{{event.venue}}</div>
     <div>{{event.address}}</div>
-    Lat: {{event.latitude}} </br>
-    Long: {{event.longitude}}
   </div>
 </div>
