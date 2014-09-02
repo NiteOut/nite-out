@@ -1,4 +1,6 @@
-angular.module('nite-out.mapFactory')
+'use strict';
+
+angular.module('nite-out.mapFactory', [])
 
 .factory('Mapper', function(){
 //////////////////////////////////////////////////////////////////////////////////////////
