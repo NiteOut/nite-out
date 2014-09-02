@@ -64,5 +64,5 @@ gulp.task('watch', function() {
   gulp.watch(paths.styles, ['styles']);
 });
 
-gulp.task('default', ['lint', 'serve', 'watch']);
+gulp.task('default', ['build', 'serve', 'watch']);
 gulp.task('build', ['lint', 'concat', 'compress']);
