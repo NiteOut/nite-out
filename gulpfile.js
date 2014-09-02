@@ -4,7 +4,6 @@ var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var refresh = require('gulp-livereload');
 var jshint = require('gulp-jshint');
-var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
