@@ -1,3 +1,5 @@
+// Setup our connection to the MySQL database
+// that handles our user data.  
 var knex = require('knex')({
     client: 'mysql',
     connection: {
@@ -8,8 +10,13 @@ var knex = require('knex')({
       charset  : 'utf8'
     }
   });
+
+// Passing an instantiated knex instance.  Passing connection info
+// directly to bookshelf is now deprecated.
 var db = require('bookshelf')(knex);
 
+// First check if the table exists, if it does not, create a new table
+// within the database.
 db.knex.schema.hasTable('users').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('users', function (user) {
