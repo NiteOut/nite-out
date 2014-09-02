@@ -1,6 +1,8 @@
+'use strict';
+
 angular.module('nite-out.movieFactory', [])
 
-.factory('Movies', function($http){
+.factory('Movies', ['$http', function($http){
   var theaters = [];
 
   var getTheaters = function(zipcode) {
@@ -22,4 +24,4 @@ angular.module('nite-out.movieFactory', [])
     theaters: theaters,
     getTheaters: getTheaters
   };
-});
+}]);

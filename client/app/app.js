@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out', [
   'nite-out.main',
   'nite-out.movies',
