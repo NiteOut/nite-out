@@ -1,6 +1,6 @@
-<h1>Events</h1>
-<div class='event' ng-repeat='event in events'>
-  <div>{{event.event.title}}</div>
-  <p>{{event.event.organizer.description}}</p>
-  <div>{{event.event.organizer.url}}</div>
+<h3>Events</h3>
+<div class="event" ng-repeat="event in events">
+  <div class="title">{{event.event.title}}</div>
+  <div class="time">{{event.event.start_date}}</div>
+  <a href="{{event.event.organizer.url}}">Event Info</a>
 </div>
