@@ -25,12 +25,23 @@ angular.module('nite-out.map', ['ui.router','google-maps'])
     // async Geocoder API call
     Mapper.setCenter(address);
   }
+
+  $scope.select = function(place){
+    $scope.setCenter(place.vicinity);
+    window.scrollTo(0,0);
+    console.log("you selected", place.name);
+
+  };
+
   // takes args: ("type of establishment", optional radius in meters, optional callback())
   $scope.renderListOfPlaces = function(){
+    $scope.places = Mapper.getLocations();
+  };
+
+  window.doStuff = function(){
     $scope.$apply(function(){
       $scope.places = Mapper.getLocations();
     });
+    $scope.renderListOfPlaces();
   };
-
-  //$scope.renderListOfPlaces();
 });

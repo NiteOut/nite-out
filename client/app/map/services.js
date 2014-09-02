@@ -4,13 +4,18 @@ angular.module('nite-out.map')
 //////////////////////////////////////////////////////////////////////////////////////////
 //  map.html is set to render {{ object.name }} and {{ object.vicinity }} from Mapper.locations via controller.
 //  set Mapper.locations with an array by Mapper.setLocations() or just Mapper.locations = [{}...].
-//
+//  Mapper.findPlace('place type') will also set Mapper.locations
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+  window.getStuff = function(type){
+    findPlaces(type, function(){
+      console.log('markers',MarkerList.markers);
+      console.log('locations', locations);
+    });
+  };
 
-
-  // array of locations set by some other controller
+  // hash of locations set by some other controller
   // { name: string, vicinity: string }
   var locations = null;
 
@@ -25,7 +30,34 @@ angular.module('nite-out.map')
   // the center point of the map or selected event
   var pointOfInterest = null;
 
-  var gmap = null;
+  var gMap = null;
+
+  // an object to manager the storage and removal of map markers
+  var MarkerList = {
+    // storage hash
+    markers: {},
+    removeMarker: function(marker){
+      delete this.markers[marker.id];
+      marker.setMap(null);
+    },
+    clearMap: function(){
+      angular.forEach(this.markers, function(marker, index){
+        this.removeMarker(marker);
+      }, this);
+    },
+    addMarker: function(options){
+      options.map = gMap;
+      options.draggable = false;
+      options.animation = google.maps.Animation.DROP;
+      options.icon = {
+        url: options.icon,
+        scaledSize: new google.maps.Size(20, 20),
+      };
+      var newMarker = new google.maps.Marker(options);
+      this.markers[newMarker.place_id] = newMarker;
+      return newMarker;
+    }
+  };
 
   // setup options for the angular-google-maps directive
   // needs to be to be implemented in a controller that has angular-google-map in it's scope
@@ -38,7 +70,7 @@ angular.module('nite-out.map')
         longitude: -122.40867880000002
     },
 
-    zoom: 14,
+    zoom: 13,
 
     control: {
       // angular-google-maps adds properties via magic
@@ -50,13 +82,12 @@ angular.module('nite-out.map')
     },
 
     events: {
-      // When map is loaded then add reference of google map instance to the Mapper.gmap
+      // When map is loaded then add reference of google map instance to the Mapper.gMap
       // FYI the google.map instance has more points of interface over the angular-google-map directive
       tilesloaded: function (mapInstance) {
-        if(!gmap){
-          gmap = mapInstance;
-          pointOfInterest = gmap.getCenter();
-          findPlaces();
+        if(!gMap){
+          gMap = mapInstance;
+          pointOfInterest = gMap.getCenter();
         }
       }
     }
@@ -84,9 +115,9 @@ angular.module('nite-out.map')
   };
 
   var setCenter = function(addressString){
-    if(gmap){
+    if(gMap){
       getLatLng(addressString, function (geolocation){
-        gmap.setCenter(geolocation);
+        gMap.setCenter(geolocation);
       });
     } else {
       alert('wait for google map tiles to load entirely');
@@ -94,9 +125,19 @@ angular.module('nite-out.map')
   };
 
   // async call to google PlacesService API
+  // supported location types: https://developers.google.com/places/documentation/supported_types
   var findPlaces = function(type, radius, cb){
+    if(typeof arguments[0] === 'function'){
+      cb = arguments[0];
+      arguments[0] = null;
+    }
+    if(typeof arguments[1] === 'function'){
+      cb = arguments[1];
+      arguments[1] = null;
+    }
+
     type = type || 'restaurant'
-    radius = radius || 15000;
+    radius = radius || 7000;
 
     var request = {
       location: pointOfInterest,
@@ -104,10 +145,9 @@ angular.module('nite-out.map')
       types: [type]
     }
 
-    var service = new google.maps.places.PlacesService(gmap);
+    var service = new google.maps.places.PlacesService(gMap);
 
     service.nearbySearch(request, function(results, status) {
-      console.log('the status of findPlces',status);
       if(status == google.maps.places.PlacesServiceStatus.OK) {
         // result fields of interest
         // name
@@ -117,12 +157,23 @@ angular.module('nite-out.map')
         // icon
         // id
 
-        // empty/initalize locations array for new results
+        //clear list of google map markers from map
+        MarkerList.clearMap();
+        // empty/initalize locations hash for new results
         locations = [];
+        var place;
         for (var i = 0; i < results.length; i++) {
-          var place = results[i];
+          place = results[i];
+          // cache results
           locations.push(place);
-          //createMarker(results[i]);
+          // add google map markers for each place
+          MarkerList.addMarker({
+            position: place.geometry.location,
+            title: place.name,
+            icon: place.icon,
+            place_id: place.place_id,
+            place: place
+          });
         }
       } else {
         console.error('call to PlacesServices did not succeed');
@@ -136,11 +187,14 @@ angular.module('nite-out.map')
 
   return {
     init: init,
-    gmap: gmap,
+    gMap: gMap,
     getLocations: getLocations,
     setLocations: setLocations,
     setCenter: setCenter,
-    findPlaces: findPlaces
+    findPlaces: findPlaces,
+
+    // each object in MarkerList.markers has a place property that references the original place object returned from google.
+    MakerList: MarkerList
   }
 
 });

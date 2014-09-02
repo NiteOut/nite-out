@@ -13,7 +13,7 @@
     <div class='.map-list-item' ng-repeat='place in places'>
       <div class='.info-item'>
         <div class='.title-item'><span>{{ place.name }}</span></div>
-        <div ng-click='setCenter(place.vicinity)' class='.address-item'><span class='item-text'>{{ place.vicinity }}</span></div>
+        <div ng-click='select(place)' class='.address-item'><span class='item-text'>{{ place.vicinity }}</span></div>
       </div>
     </div>
   </div>
