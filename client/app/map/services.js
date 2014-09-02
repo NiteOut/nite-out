@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.mapFactory', [])
 
 .factory('Mapper', function(){
@@ -195,6 +197,6 @@ angular.module('nite-out.mapFactory', [])
 
     // each object in MarkerList.markers has a place property that references the original place object returned from google.
     MakerList: MarkerList
-  }
+  };
 
 });
