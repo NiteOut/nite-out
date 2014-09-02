@@ -10,17 +10,16 @@ angular.module('nite-out.movies', ['ui.router'])
     });
 }])
 
-.controller('MoviesController', ['$scope', 'Movies', function($scope, Movies){
+.controller('MoviesController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
   $scope.theaters = Movies.theaters;
 
-  Movies.getTheaters(94102);
-}]);
   $scope.toShowtimes = function() {
     $state.go('main.showtimes');
   };
 
-  Movies.getTheaters(94518);
-});
+  Movies.getTheaters(94102);
+}]);
+  
 
 //in order for this to switch to a different view we will need to
 //register this view with the ui.router (app.js)

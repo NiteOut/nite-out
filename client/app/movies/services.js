@@ -14,6 +14,7 @@ angular.module('nite-out.movieFactory', [])
       params: {zipcode: zipcode}
     })
     .then(function(resp) {
+      console.log(resp);
       resp.data.results.forEach(function(item) {
         theaters.push(item);
       });
@@ -25,3 +26,5 @@ angular.module('nite-out.movieFactory', [])
     getTheaters: getTheaters
   };
 }]);
+
+// angular.module('nite-out.mo', [])

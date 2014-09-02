@@ -13,7 +13,7 @@ angular.module('nite-out', [
   'nite-out.restaurantFactory',
   
 
-  'nite-out.test',
+  //'nite-out.test',
   'ui.router'
 ])
 
