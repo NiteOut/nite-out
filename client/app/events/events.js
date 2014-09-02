@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nite-out.events', ['ui.router'])
+angular.module('nite-out.events', ['ui.router', 'google-maps'])
 
 // Configure out state using ui.router
 .config(['$stateProvider', function($stateProvider) {
@@ -18,8 +18,6 @@ angular.module('nite-out.events', ['ui.router'])
   // Fetch our events to update $scope.events
   Events.getEvents(94102);
 
-  $scope.places = [];
-
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup
   // for changing options go to: https://angular-ui.github.io/angular-google-maps/#!/api
@@ -30,24 +28,6 @@ angular.module('nite-out.events', ['ui.router'])
     // async Geocoder API call
     var address = event.event.venue.address + ',' + event.event.venue.city;
     Mapper.setCenter(address);
-  };
-
-  $scope.select = function(place){
-    $scope.setCenter(place.vicinity);
-    window.scrollTo(0,0);
-    console.log('you selected', place.name);
-  };
-
-  // takes args: ('type of establishment', optional radius in meters, optional callback())
-  $scope.renderListOfPlaces = function(){
-    $scope.places = Mapper.getLocations();
-  };
-
-  window.doStuff = function(){
-    $scope.$apply(function(){
-      $scope.places = Mapper.getLocations();
-    });
-    $scope.renderListOfPlaces();
   };
 
 }]);

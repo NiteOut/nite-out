@@ -21,8 +21,18 @@ angular.module('nite-out.eventFactory', [])
     })
     .then(function(res) {
       // Push to events array to maintain reference instead of using =.
-      res.data.results.forEach(function(item) {
-        events.push(item);
+      res.data.results.forEach(function(item, index) {
+        var event = {
+          id: index + 1,
+          title: item.event.title,
+          venue: item.event.venue.name,
+          address: item.event.venue.address + ', ' + item.event.venue.city,
+          url: item.event.url,
+          date: item.event.start_date,
+          latitude: item.event.venue.latitude,
+          longitude: item.event.venue.longitude
+        };
+        events.push(event);
       });
     });
   };
