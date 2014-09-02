@@ -1,7 +1,6 @@
 <h3>Restaurants</h3>
-<div class="event" ng-repeat="restaurant in restaurants">
-  <a href=""><img class="logo" src="assets/yelp.png" /></a>
-  <a href=""><img class="logo" src="assets/opentable.png" /></a>
+<div class="event" ng-repeat="restaurant in restaurants | limitTo: 10">
+  <a href="{{restaurant.reserve_url}}"><img class="logo" src="assets/opentable.png" /></a>
   <span class="title" ng-click="getInfo()">{{restaurant.name}}</span></br>
   <span class="phone">Phone: {{restaurant.phone}}</span></br>
   <span class="address">Address: {{restaurant.address}}, {{restaurant.city}}, {{restaurant.postal_code}} </span>
