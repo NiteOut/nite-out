@@ -1,4 +1,5 @@
 {
+    "predef": ["angular", "google"]
     "node": true,
     "esnext": true,
     "bitwise": true,
