@@ -1,16 +1,12 @@
-<div id='container'>
-  <div class='searchBar'>
+<div id="container">
+  <div class="search-bar">
     <a ui-sref="main.movies">Movies</a>
     <a ui-sref="main.events">Events</a>
     <a ui-sref="main.restaurants">Restaurants</a>
-    <form name='mainSearchBar' ng-submit='renderPage()' novalidate>
-      <input name='searchText' type='text' ng-model='input' placeholder='Enter your search here!'/>
+    <form ng-submit="renderPage()" novalidate>
+      <input class="search-box" type="text" ng-model="input" placeholder="Enter your search here!"/>
     </form>
-
-
-
+  </div>
   <div ui-view></div>
-
-
 </div>
 

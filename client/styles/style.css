@@ -1,3 +1,53 @@
+body {
+  background-color: #202020;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+h1, h3{
+  text-align: center;
+  color: #A9342C;
+}
 .event {
-  
+  color: #9B9C9B;
+  margin: 20px;
+}
+
+.event:hover{
+  background-color: #4B433D;
+}
+
+.container {
+  width: 100%;
+}
+
+.search-bar {
+  text-align: center;
+  width: 100%;
+}
+
+.search-box{
+  width: 50%;
+}
+
+.title {
+  font-size: 1.2em;
+  color: #E5372E;
+}
+
+.time, .phone {
+  color: #6C8A95;
+}
+
+.logo {
+  position: relative;
+  float: right;
+  top: 0px;
+  height: 25px;
+}
+
+.address {
+  color: #6C8A95;
+}
+
+a {
+  color: #6C8A95;
 }
