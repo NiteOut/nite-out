@@ -1,8 +1,13 @@
 <h3>Restaurants</h3>
+  <center>
+    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events"></google-map>
+  </center>
 <div class="event" ng-repeat="restaurant in restaurants">
-  <a href="{{restaurant.reserve_url}}"><img class="logo" src="assets/opentable.png" /></a>
-  <span class="title" ng-click="getInfo()">{{restaurant.name}}</span></br>
-  <span class="phone">Phone: {{restaurant.phone}}</span></br>
-  <span class="address">Address: {{restaurant.address}}, {{restaurant.city}}, {{restaurant.postal_code}} </span>
+  <div ng-click="setCenter(restaurant)">
+    <a href="{{restaurant.reserve_url}}"><img class="logo" src="assets/opentable.png" /></a>
+    <span class="title" ng-click="getInfo()">{{restaurant.name}}</span></br>
+    <span class="phone">Phone: {{restaurant.phone}}</span></br>
+    <span class="address">Address: {{restaurant.address}}, {{restaurant.city}}</span>
+  </div>
 </div>
 
