@@ -1,5 +1,5 @@
 <h3>Restaurants</h3>
-<div class="event" ng-repeat="restaurant in restaurants | limitTo: 10">
+<div class="event" ng-repeat="restaurant in restaurants">
   <a href="{{restaurant.reserve_url}}"><img class="logo" src="assets/opentable.png" /></a>
   <span class="title" ng-click="getInfo()">{{restaurant.name}}</span></br>
   <span class="phone">Phone: {{restaurant.phone}}</span></br>
