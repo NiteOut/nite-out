@@ -7,7 +7,6 @@ angular.module('nite-out.mapFactory', [])
 //  map.html is set to render {{ object.name }} and {{ object.vicinity }} from Mapper.locations via controller.
 //  set Mapper.locations with an array by Mapper.setLocations() or just Mapper.locations = [{}...].
 //  Mapper.findPlace('place type') will also set Mapper.locations
-//
 //////////////////////////////////////////////////////////////////////////////////////////
 
   window.getStuff = function(type){
