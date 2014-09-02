@@ -1,6 +1,14 @@
 <h3>Events</h3>
+  <center>
+    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events"></google-map>
+  </center>
 <div class="event" ng-repeat="event in events">
-  <a href="{{event.event.organizer.url}}"><img class="logo" src="assets/eventbrite.png" /></a>
-  <span class="title">{{event.event.title}}</span></br>
-  <span class="time">{{event.event.start_date}}</span></br>
+  <div ng-click="setCenter(event)">
+    <a href="{{event.event.organizer.url}}"><img class="logo" src="assets/eventbrite.png" /></a>
+    <span class="title">{{event.event.title}}</span></br>
+    <span class="time">{{event.event.start_date}}</span></br>
+    <div>{{event.event.venue.name}}</div>
+    <div>{{event.event.venue.address}}, {{event.event.venue.city}}, {{event.event.venue.postal_code}}</div>
+    <!-- Lat: {{event.event.venue.latitude}}, Long: {{event.event.venue.longitude}} -->
+  </div>
 </div>

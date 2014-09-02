@@ -3,6 +3,18 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+.angular-google-map-container {
+  height: 400px;
+  width: 400px;
+}
+.item-text {
+  color: blue;
+  cursor: pointer;
+}
+#google-map div {
+  border-style: none;
+}
+
 h1, h3{
   text-align: center;
   color: #F0A83A;
