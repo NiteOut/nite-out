@@ -38,5 +38,9 @@ module.exports = {
       }
     });
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 3ef8cabb770fc547351ffa1de6e2322b906611b9
 };
