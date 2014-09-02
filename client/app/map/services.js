@@ -1,7 +1,68 @@
 angular.module('nite-out.map')
 
 .factory('Mapper', function(){
+//////////////////////////////////////////////////////////////////////////////////////////
+//  map.html is set to render {{ object.name }} and {{ object.vicinity }} from Mapper.locations via controller.
+//  set Mapper.locations with an array by Mapper.setLocations() or just Mapper.locations = [{}...].
+//
+//
+//////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+  // array of locations set by some other controller
+  // { name: string, vicinity: string }
+  var locations = null;
+
+  var getLocations = function(){
+    return locations;
+  };
+
+  var setLocations = function(array){
+    locations = array;
+  };
+
+  // the center point of the map or selected event
+  var pointOfInterest = null;
+
+  var gmap = null;
+
+  // setup options for the angular-google-maps directive
+  // needs to be to be implemented in a controller that has angular-google-map in it's scope
+  var init = {
+    // each property has to be assigned to it's corresponding attribute in the directive
+    // 'center' is required
+    center: {
+        // Hack Reactor
+        latitude: 37.7835565,
+        longitude: -122.40867880000002
+    },
+
+    zoom: 14,
+
+    control: {
+      // angular-google-maps adds properties via magic
+      // getGMap() gets the map instance
+    },
+
+    options: {
+      disableDefaultUI: true
+    },
+
+    events: {
+      // When map is loaded then add reference of google map instance to the Mapper.gmap
+      // FYI the google.map instance has more points of interface over the angular-google-map directive
+      tilesloaded: function (mapInstance) {
+        if(!gmap){
+          gmap = mapInstance;
+          pointOfInterest = gmap.getCenter();
+          findPlaces();
+        }
+      }
+    }
+  };
+
+  // google maps only accept latitude/longitude objects so geocoding an address is necessary.
   var getLatLng = function(addressString, cb){
     var geolocation = {};
     // gecoder takes { address: string } as optional request object property
@@ -9,8 +70,8 @@ angular.module('nite-out.map')
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode(request, function (response, status){
       if(status == google.maps.GeocoderStatus.OK){
-        geolocation.latitude = response[0].geometry.location.lat();
-        geolocation.longitude = response[0].geometry.location.lng();
+        geolocation.lat = geolocation.latitude = response[0].geometry.location.lat();
+        geolocation.lng = geolocation.longitude = response[0].geometry.location.lng();
         if(typeof cb === 'function'){
           cb(geolocation);
         } else {
@@ -22,14 +83,64 @@ angular.module('nite-out.map')
     });
   };
 
-  var setMapCenter = function(addressString, cb){
-    getLatLng(addressString, function (geolocation){
-      cb(geolocation);
+  var setCenter = function(addressString){
+    if(gmap){
+      getLatLng(addressString, function (geolocation){
+        gmap.setCenter(geolocation);
+      });
+    } else {
+      alert('wait for google map tiles to load entirely');
+    }
+  };
+
+  // async call to google PlacesService API
+  var findPlaces = function(type, radius, cb){
+    type = type || 'restaurant'
+    radius = radius || 15000;
+
+    var request = {
+      location: pointOfInterest,
+      radius: radius || 15000,
+      types: [type]
+    }
+
+    var service = new google.maps.places.PlacesService(gmap);
+
+    service.nearbySearch(request, function(results, status) {
+      console.log('the status of findPlces',status);
+      if(status == google.maps.places.PlacesServiceStatus.OK) {
+        // result fields of interest
+        // name
+        // geometry.location
+        // vicinity (address)
+        // rating
+        // icon
+        // id
+
+        // empty/initalize locations array for new results
+        locations = [];
+        for (var i = 0; i < results.length; i++) {
+          var place = results[i];
+          locations.push(place);
+          //createMarker(results[i]);
+        }
+      } else {
+        console.error('call to PlacesServices did not succeed');
+      }
+      if(typeof cb === 'function'){
+        cb(locations);
+      }
     });
+
   };
 
   return {
-    setCenter: setMapCenter
+    init: init,
+    gmap: gmap,
+    getLocations: getLocations,
+    setLocations: setLocations,
+    setCenter: setCenter,
+    findPlaces: findPlaces
   }
 
 });
