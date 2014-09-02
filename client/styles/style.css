@@ -2,10 +2,12 @@ body {
   background-color: #202020;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
 h1, h3{
   text-align: center;
   color: #F0A83A;
 }
+
 .event {
   color: #9B9C9B;
   margin: 20px;

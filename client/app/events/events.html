@@ -1,6 +1,6 @@
 <h3>Events</h3>
 <div class="event" ng-repeat="event in events">
-  <div class="title">{{event.event.title}}</div>
-  <div class="time">{{event.event.start_date}}</div>
-  <a href="{{event.event.organizer.url}}">Event Info</a>
+  <a href="{{event.event.organizer.url}}"><img class="logo" src="assets/eventbrite.png" /></a>
+  <span class="title">{{event.event.title}}</span></br>
+  <span class="time">{{event.event.start_date}}</span></br>
 </div>
