@@ -101,7 +101,7 @@ angular.module('nite-out.mapFactory', [])
     var request = { address: addressString };
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode(request, function (response, status){
-      if(status == google.maps.GeocoderStatus.OK){
+      if(status === google.maps.GeocoderStatus.OK){
         geolocation.lat = geolocation.latitude = response[0].geometry.location.lat();
         geolocation.lng = geolocation.longitude = response[0].geometry.location.lng();
         if(typeof cb === 'function'){
@@ -137,19 +137,19 @@ angular.module('nite-out.mapFactory', [])
       arguments[1] = null;
     }
 
-    type = type || 'restaurant'
+    type = type || 'restaurant';
     radius = radius || 7000;
 
     var request = {
       location: pointOfInterest,
       radius: radius || 15000,
       types: [type]
-    }
+    };
 
     var service = new google.maps.places.PlacesService(gMap);
 
     service.nearbySearch(request, function(results, status) {
-      if(status == google.maps.places.PlacesServiceStatus.OK) {
+      if(status === google.maps.places.PlacesServiceStatus.OK) {
         // result fields of interest
         // name
         // geometry.location
@@ -196,6 +196,6 @@ angular.module('nite-out.mapFactory', [])
 
     // each object in MarkerList.markers has a place property that references the original place object returned from google.
     MakerList: MarkerList
-  }
+  };
 
 });
