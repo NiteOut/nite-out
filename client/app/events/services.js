@@ -10,7 +10,7 @@ angular.module('nite-out.eventFactory', [])
     // Events array is spliced in order to clear it of previous events.
     events.splice(0);
 
-    // Conduct our api handled by the server.
+    // Conduct our api call handled by the server.
     // TODO: Handle the entire api call on the client-side.
     return $http({
       method: 'GET',
