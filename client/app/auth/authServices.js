@@ -1,7 +1,7 @@
 angular.module('nite-out.authServices',[])
 
 .factory('AuthRequests', ['$http', function($http) {
-  var loginInfo = function(userData) {
+  var signup = function(userData) {
     return $http({
       method: 'POST',
       url: '/users',
@@ -13,6 +13,6 @@ angular.module('nite-out.authServices',[])
   };
 
   return {
-    loginInfo: loginInfo
+    signup: signup
   };
 }]);

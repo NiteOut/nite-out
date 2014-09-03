@@ -12,7 +12,7 @@ angular.module('nite-out.auth', ['ui.router'])
   };
 
   $scope.sendData = function(data) {
-    AuthRequests.loginInfo(data);
+    AuthRequests.signup(data);
   };
 
 }])
