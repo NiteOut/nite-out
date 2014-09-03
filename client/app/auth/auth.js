@@ -11,8 +11,12 @@ angular.module('nite-out.auth', ['ui.router'])
     $state.go('signup');
   };
 
-  $scope.sendData = function(data) {
+  $scope.postSignupData = function(data) {
     AuthRequests.signup(data);
+  };
+
+  $scope.getLoginData = function(data) {
+    AuthRequests.userLogin(data);
   };
 
 }])
