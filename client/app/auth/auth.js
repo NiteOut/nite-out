@@ -4,3 +4,4 @@ angular.module('nite-out.auth', ['ui.router'])
   $scope.this= that
 }])
 
+
