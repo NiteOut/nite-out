@@ -1,10 +1,13 @@
 angular.module('nite-out.auth', ['ui.router'])
 
 .controller('AuthController', ['$scope', '$state', function($scope, $state) {
+  $scope.userInfo = {
+    userEmail: '',
+    password: ''
+  };
   $scope.loginPage = function() {
     $state.go('login');
   };
-
   $scope.signupPage = function() {
     $state.go('signup');
   };
@@ -22,6 +25,6 @@ angular.module('nite-out.auth', ['ui.router'])
       url: '/signup',
       templateUrl: 'app/auth/signupPage.html',
       controller: 'AuthController'
-    })
+    });
 }]);
 

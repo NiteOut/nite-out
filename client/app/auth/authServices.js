@@ -11,4 +11,8 @@ angular.module('nite-out.authServices',[])
       console.log(res.data);
     });
   };
+
+  return {
+    loginInfo: loginInfo
+  };
 }]);
