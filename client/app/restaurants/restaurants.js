@@ -24,7 +24,6 @@ angular.module('nite-out.restaurants', ['ui.router'])
     Restaurants.getInfo(data);
   };
 
-
   $scope.places = [];
 
   // let $scope.map be the initial interface object for the google-map directive

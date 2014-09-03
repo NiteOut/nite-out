@@ -34,6 +34,7 @@ angular.module('nite-out.eventFactory', [])
           icon: '/assets/marker.png'
         };
         events.push(event);
+        
       });
     });
   };

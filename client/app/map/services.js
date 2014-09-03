@@ -102,7 +102,7 @@ angular.module('nite-out.mapFactory', [])
     var request = { address: addressString };
     var geocoder = new google.maps.Geocoder();
 
-     return geocoder.geocode(request, function (response, status){
+    return geocoder.geocode(request, function (response, status){
       if(status === google.maps.GeocoderStatus.OK){
         geolocation.latitude = response[0].geometry.location.lat();
         geolocation.longitude = response[0].geometry.location.lng();
