@@ -1,8 +1,8 @@
 // Import the databse and the user model and collection for use
 // in accessing the database for user login/signup.
-var db = require('../config/db.js');
 var User = require('./userModel.js');
 var Users = require('./userCollection.js');
+var jwt = require('jwt-simple');
 
 // Here we hold all the methods that handle user login and signup.
 module.exports = {
@@ -27,12 +27,11 @@ module.exports = {
             if (match) {
               // The password is a match, send back appropriate header
               // to client application, tokening will be handle by client.
-              // res.writeHead(200);
-              res.send("User successfully logged in");
+              var token = jwt.encode(user, 'secret');
+              res.json({token: token});
             } else {
               // Unauthorized request status code sent back to client.
-              // res.writeHead(401);
-              res.send('Bad password');
+              next(new Error('Bad password'));
             }
           });
         }
@@ -64,8 +63,8 @@ module.exports = {
               Users.add(newUser);
               // Send created response to trigger client application to
               // issue an authorization token.
-              // res.writeHead(201);
-              res.send('new user created');
+              var token = jwt.encode(user, 'secret');
+              res.json({token: token});
             });
         } else {
           // Send bad request header and inform the client that the user
