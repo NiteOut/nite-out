@@ -27,8 +27,6 @@ angular.module('nite-out.restaurants', ['ui.router'])
     Restaurants.getInfo(data);
   };
 
-  $scope.places = [];
-
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup
   // for changing options go to: https://angular-ui.github.io/angular-google-maps/#!/api

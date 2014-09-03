@@ -4,7 +4,7 @@ angular.module('nite-out.restaurantFactory', [])
 
 .factory('Restaurants', ['$http', 'Mapper', function($http, Mapper){
   var restaurants = [];
-  
+
   // Our query to Opentable API, API is not-official as Opentable does
   // not currently have a public facing API.
   var getRestaurants = function(zipcode) {
@@ -15,7 +15,7 @@ angular.module('nite-out.restaurantFactory', [])
       // policy.
       method: 'jsonp',
       url: 'http://opentable.herokuapp.com/api/restaurants?callback=JSON_CALLBACK',
-      params: {zip: zipcode, per_page: 10},
+      params: {zip: zipcode, per_page: 100}
     })
     .then(function(res) {
       res.data.restaurants.forEach(function(item, index) {
@@ -32,8 +32,6 @@ angular.module('nite-out.restaurantFactory', [])
           Mapper.getLatLng(restaurant.address)
             .then(function(data) {
               restaurants[index].coords = data;
-              // restaurants[index].latitude = data.latitude;
-              // restaurants[index].longitude = data.longitude;
             });
         });
       });
