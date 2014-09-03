@@ -16,7 +16,6 @@ angular.module('nite-out.movieFactory', [])
       params: {zipcode: zipcode}
     })
     .then(function(resp) {
-      console.log(resp);
       resp.data.results.forEach(function(item) {
         theaters.push(item);
       });

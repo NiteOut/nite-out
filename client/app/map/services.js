@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.mapFactory', [])
 
 .factory('Mapper', function(){
@@ -5,7 +7,6 @@ angular.module('nite-out.mapFactory', [])
 //  map.html is set to render {{ object.name }} and {{ object.vicinity }} from Mapper.locations via controller.
 //  set Mapper.locations with an array by Mapper.setLocations() or just Mapper.locations = [{}...].
 //  Mapper.findPlace('place type') will also set Mapper.locations
-//
 //////////////////////////////////////////////////////////////////////////////////////////
 
   window.getStuff = function(type){
@@ -78,7 +79,8 @@ angular.module('nite-out.mapFactory', [])
     },
 
     options: {
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      scrollwheel: false,
     },
 
     events: {
@@ -94,22 +96,17 @@ angular.module('nite-out.mapFactory', [])
   };
 
   // google maps only accept latitude/longitude objects so geocoding an address is necessary.
-  var getLatLng = function(addressString, cb){
+  var getLatLng = function(addressString){
     var geolocation = {};
     // gecoder takes { address: string } as optional request object property
     var request = { address: addressString };
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode(request, function (response, status){
-      if(status == google.maps.GeocoderStatus.OK){
-        geolocation.lat = geolocation.latitude = response[0].geometry.location.lat();
-        geolocation.lng = geolocation.longitude = response[0].geometry.location.lng();
-        if(typeof cb === 'function'){
-          cb(geolocation);
-        } else {
-          console.error('getLatLng requires a callback( { latitude: number, longitude: number } )');
-        }
-      } else {
-        console.error('getLatLng was NOT successful at geocoding address');
+
+    return geocoder.geocode(request, function (response, status){
+      if(status === google.maps.GeocoderStatus.OK){
+        geolocation.latitude = response[0].geometry.location.lat();
+        geolocation.longitude = response[0].geometry.location.lng();
+        return geolocation;
       }
     });
   };
@@ -136,19 +133,19 @@ angular.module('nite-out.mapFactory', [])
       arguments[1] = null;
     }
 
-    type = type || 'restaurant'
+    type = type || 'restaurant';
     radius = radius || 7000;
 
     var request = {
       location: pointOfInterest,
       radius: radius || 15000,
       types: [type]
-    }
+    };
 
     var service = new google.maps.places.PlacesService(gMap);
 
     service.nearbySearch(request, function(results, status) {
-      if(status == google.maps.places.PlacesServiceStatus.OK) {
+      if(status === google.maps.places.PlacesServiceStatus.OK) {
         // result fields of interest
         // name
         // geometry.location
@@ -195,6 +192,6 @@ angular.module('nite-out.mapFactory', [])
 
     // each object in MarkerList.markers has a place property that references the original place object returned from google.
     MakerList: MarkerList
-  }
+  };
 
 });

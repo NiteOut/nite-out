@@ -1,19 +1,28 @@
-<div id='mapWrapper'>
+<div id="mapWrapper">
 
   <style>
-    .angular-google-map-container { height: 400px; width: 400px; }
-    .item-text { color: blue; cursor: pointer; }
-    #google-map div { border-style: none;  }
+    .angular-google-map-container {
+      height: 400px;
+      width: 400px;
+    }
+    .item-text {
+      color: blue;
+      cursor: pointer;
+    }
+    #google-map div {
+      border-style: none;
+    }
   </style>
-
-  <google-map id='google-map' center="map.center" zoom="map.zoom" control='map.control' options='map.options' events='map.events'></google-map>
-
+  
+  <center>
+    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events"></google-map>
+  </center>
   <!-- a list of locations mapController renders using Mapper Factory. It was used for testing.  -->
-  <div class='.map-list'>
-    <div class='.map-list-item' ng-repeat='place in places'>
-      <div class='.info-item'>
-        <div class='.title-item'><span>{{ place.name }}</span></div>
-        <div ng-click='select(place)' class='.address-item'><span class='item-text'>{{ place.vicinity }}</span></div>
+  <div class="map-list">
+    <div class="map-list-item" ng-repeat="place in places">
+      <div class="info-item">
+        <div class="title-item"><span>{{ place.name }}</span></div>
+        <div ng-click="select(place)" class="address-item"><span class="item-text">{{ place.vicinity }}</span></div>
       </div>
     </div>
   </div>

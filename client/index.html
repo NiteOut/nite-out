@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <title>Nite-Out</title>
-<!--   <link rel="stylesheet" type="text/css" href="styles/style.css" /> -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <link rel="stylesheet" type="text/css" href="styles/icecream-grid.css" />
 </head>
 <body ng-app='nite-out'>
   <h1>Nite-Out</h1>
 
-
-  <div ui-view></div>
+  <div class="i-g">
+    <div class="i-2"></div>
+    <div class="i-8" ui-view></div>
+    <div class="i-2"></div>
+  </div>
   <!-- distribution requirements -->
   <!-- <script src="dist/build.js"></script> -->
 

@@ -1,8 +1,15 @@
-<h1>Events</h1>
-<div class='events'>
-  <div class='event' ng-repeat='event in events'>
-    <div>{{event.event.title}}</div>
-    <p>{{event.event.organizer.description}}</p>
-    <div>{{event.event.organizer.url}}</div>
+<h3>Events</h3>
+  <center>
+    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
+      <markers models="events" coords="'self'" fit="'true'" icon="'icon'"></markers>
+    </google-map>
+  </center>
+<div class="event" ng-repeat="event in events">
+  <div ng-click="setCenter(event)">
+    <a href="{{event.url}}"><img class="logo" src="assets/eventbrite.png" /></a>
+    <span class="title">{{event.id}}. {{event.title}}</span></br>
+    <span class="time">{{event.date}}</span></br>
+    <div>{{event.venue}}</div>
+    <div>{{event.address}}</div>
   </div>
 </div>
