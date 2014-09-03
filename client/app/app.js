@@ -28,8 +28,14 @@ angular.module('nite-out', [
     replace: true,
     templateUrl: 'app/auth/loggedin.html'
   }
-});
+})
 
-
+.directive('needlogin', function() {
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'app/auth/needLogin.html'
+  }
+})
 
 
