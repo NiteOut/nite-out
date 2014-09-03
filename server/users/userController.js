@@ -28,7 +28,7 @@ module.exports = {
               // The password is a match, send back appropriate header
               // to client application, tokening will be handle by client.
               // res.writeHead(200);
-              res.end();
+              res.send("User successfully logged in");
             } else {
               // Unauthorized request status code sent back to client.
               // res.writeHead(401);
