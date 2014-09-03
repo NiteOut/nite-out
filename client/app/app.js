@@ -2,6 +2,7 @@
 
 angular.module('nite-out', [
   'nite-out.main',
+  'nite-out.auth',
   'nite-out.movies',
   'nite-out.movieFactory',
   'nite-out.showtimes',
@@ -34,7 +35,7 @@ angular.module('nite-out', [
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'app/auth/needLogin.html'
+    templateUrl: 'app/auth/needlogin.html'
   }
 })
 
