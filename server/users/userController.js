@@ -18,7 +18,7 @@ module.exports = {
       .then(function(user) {
         if (!user) {
           // If the user does not exist, send back a bad request status.
-          res.writeHead(400);
+          // res.writeHead(400);
           res.send('User does not exist');
         } else {
           // User exists, call method to compare the supplied password
@@ -27,11 +27,11 @@ module.exports = {
             if (match) {
               // The password is a match, send back appropriate header
               // to client application, tokening will be handle by client.
-              res.writeHead(200);
+              // res.writeHead(200);
               res.end();
             } else {
               // Unauthorized request status code sent back to client.
-              res.writeHead(401);
+              // res.writeHead(401);
               res.send('Bad password');
             }
           });
