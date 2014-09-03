@@ -4,6 +4,8 @@ angular.module('nite-out.movieFactory', [])
 
 .factory('Movies', ['$http', function($http){
   var theaters = [];
+  var movies = [];
+  var shows = [];
 
   var getTheaters = function(zipcode) {
     theaters.splice(0);
@@ -18,11 +20,19 @@ angular.module('nite-out.movieFactory', [])
       resp.data.results.forEach(function(item) {
         theaters.push(item);
       });
+
+      for(var i = 0; i < theaters.length; i++){      
+        movies.push(theaters[i].movies);
+      }
+
+
     });
   };
 
   return {
     theaters: theaters,
+    movies: movies,
+    shows: shows,
     getTheaters: getTheaters
   };
 }]);
