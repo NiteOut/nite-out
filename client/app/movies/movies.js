@@ -10,9 +10,13 @@ angular.module('nite-out.movies', ['ui.router'])
     });
 }])
 
-.controller('MoviesController', ['$scope', 'Movies', function($scope, Movies){
+.controller('MoviesController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
   $scope.theaters = Movies.theaters;
+  $scope.toShowtimes = function(selected) {
+    Movies.selected = selected;
+    $state.go('main.showtimes');
+  };
 
   Movies.getTheaters(94102);
 }]);
-
+  

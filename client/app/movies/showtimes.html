@@ -1,0 +1,15 @@
+<div id='showtimesContainer'>
+  <h1>Movies</h1>
+  <div>
+    <ul class='showtimes'>
+      <li class='showtime' ng-repeat='movie in moviesStuff'>
+        {{movie.name}}
+          <ul>
+            <li ng-repeat='showtime in movie.showtimes' ng-click='buyTicket(showtime)'>
+              {{showtime}}
+            </li>
+          <ul>
+      </li>
+    </ul>
+  </div>
+</div>
