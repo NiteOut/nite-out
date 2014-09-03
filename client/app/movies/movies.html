@@ -2,7 +2,7 @@
   <h1>Theaters</h1>
   <div>
     <ul class='theaters'>
-      <li class='theater' ng-repeat='theater in theaters' ng-click='toShowtimes()'>
+      <li class='theater' ng-repeat='theater in theaters' ng-click='toShowtimes(theater)'>
         {{theater.name}}
       </li>
     </ul>

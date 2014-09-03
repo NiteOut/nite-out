@@ -12,17 +12,12 @@ angular.module('nite-out.showtimes', ['ui.router'])
 }])
 
 .controller('showtimesController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
-  $scope.moviesStuff = Movies.movies[0]; //hard coded for now
-  console.log(Movies.shows[0]);
-  $scope.showtimes = [];
-  // console.log(Movies.theaters[0].movies);
-  // for(var i = 0; i < Movies.theaters[0].movies.length; i++){
-  //   $scope.showtimes.push(Movies.theaters[0].movies.showtimes[i]);
-  // }
-  
-  console.log(Movies.theaters);
+  $scope.moviesStuff = Movies.selected.movies; 
 
-console.log('HERE!');
+  $scope.buyTicket = function(showtime) {
+    Movies.selectedShowtime = showtime;
+    $state.go('main.buyTicket');
+  };
 
 }]);
 

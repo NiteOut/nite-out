@@ -5,8 +5,8 @@
       <li class='showtime' ng-repeat='movie in moviesStuff'>
         {{movie.name}}
           <ul>
-            <li>
-              {{movie.showtimes}}
+            <li ng-repeat='showtime in movie.showtimes' ng-click='buyTicket(showtime)'>
+              {{showtime}}
             </li>
           <ul>
       </li>
