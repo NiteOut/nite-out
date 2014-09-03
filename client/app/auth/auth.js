@@ -20,7 +20,7 @@ angular.module('nite-out.auth', ['ui.router'])
   };
 
   $scope.checkAuth = function() {
-    return $window.localStorage.getItem('nite-out.user');
+    $window.localStorage.getItem('nite-out.user'));
   }
 }])
 
