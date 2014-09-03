@@ -26,8 +26,6 @@ angular.module('nite-out.restaurantFactory', [])
           phone: item.phone,
           address: item.address + ', ' + item.city,
         };
-        restaurant.latitude = Mapper.getLatLng(restaurant.address).latitude;
-        restaurant.longitude = Mapper.getLatLng(restaurant.address).longitude;
         restaurants.push(restaurant);
       });
     });
