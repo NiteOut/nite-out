@@ -9,8 +9,11 @@
 </head>
 <body ng-app='nite-out'>
   <h1>Nite-Out</h1>
-  <div ng-if="loggedin" class="loggedin" loggedin></div>
-  <div ng-if="!loggedin" class="needlogin" ng-controller='AuthController' needlogin></div>
+
+  <div class="userStatus" ng-controller="AuthController">
+    <loggedin ng-if="loginStatus"></loggedin>
+    <needlogin ng-if="!loginStatus"></needlogin>
+  </div>
 
   <div class="i-g">
     <div class="i-2"></div>
