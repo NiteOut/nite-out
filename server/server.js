@@ -5,10 +5,11 @@
 
 var express = require('express');
 var mongoose = require('mongoose');
+var mongodb =require('../keys.js').mongodb;
 
 // Defer to the locally hosted mongodb if a process
 // variable is not defined.
-var dbURL = process.env.DBURL || 'mongodb://localhost/nite-out';
+var dbURL = mongodb || 'mongodb://localhost/nite-out';
 mongoose.connect(dbURL);
 
 var app = express();

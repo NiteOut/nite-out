@@ -1,15 +1,17 @@
 <h3>Restaurants</h3>
   <center>
     <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-      <!-- <markers models="restaurants" coords="'self'" fit="'true'"></markers> -->
+      <markers ng-if="resolved" models="restaurants" coords="'coords'" fit="'true'"></markers>
     </google-map>
   </center>
+  <span ng-click="resolved = !resolved">{{resolved}}</span>
 <div class="event" ng-repeat="restaurant in restaurants">
   <div ng-click="setCenter(restaurant)">
     <a href="{{restaurant.url}}"><img class="logo" src="assets/opentable.png" /></a>
     <span class="title" ng-click="getInfo()">{{restaurant.name}}</span></br>
     <span class="phone">Phone: {{restaurant.phone}}</span></br>
-    <span class="address">Address: {{restaurant.address}}</span>
+    <span class="address">Address: {{restaurant.address}}</span></br>
+    <span>{{restaurant.coords}}</span></br> 
   </div>
 </div>
 

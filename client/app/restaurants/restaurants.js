@@ -14,8 +14,11 @@ angular.module('nite-out.restaurants', ['ui.router'])
 
 .controller('RestaurantsController', ['$scope', 'Restaurants', 'Mapper', function($scope, Restaurants, Mapper){
   $scope.restaurants = Restaurants.restaurants;
+  $scope.resolved = false;
   // Populate our restaurants array from Opentable
-  Restaurants.getRestaurants(94102);
+  Restaurants.getRestaurants(94102).then(function(){
+    $scope.resolved = !$scope.resolved;
+  });
 
   // Query Yelp API for more information on our restaurant
   $scope.getInfo = function() {
