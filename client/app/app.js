@@ -38,4 +38,3 @@ angular.module('nite-out', [
     templateUrl: 'app/auth/needlogin.tpl.html'
   }
 })
-
