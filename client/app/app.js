@@ -3,6 +3,7 @@
 angular.module('nite-out', [
   'nite-out.main',
   'nite-out.auth',
+  'nite-out.authServices',
   'nite-out.movies',
   'nite-out.movieFactory',
   'nite-out.showtimes',
