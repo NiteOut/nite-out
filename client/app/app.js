@@ -27,7 +27,7 @@ angular.module('nite-out', [
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'app/auth/loggedin.html'
+    templateUrl: 'app/auth/loggedin.tpl.html'
   }
 })
 
@@ -35,7 +35,7 @@ angular.module('nite-out', [
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'app/auth/needlogin.html'
+    templateUrl: 'app/auth/needlogin.tpl.html'
   }
 })
 
