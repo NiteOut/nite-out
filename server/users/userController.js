@@ -64,13 +64,13 @@ module.exports = {
               Users.add(newUser);
               // Send created response to trigger client application to
               // issue an authorization token.
-              res.writeHead(201);
-              res.end();
+              // res.writeHead(201);
+              res.send('new user created');
             });
         } else {
           // Send bad request header and inform the client that the user
           // already exists.
-          res.writeHead(400);
+          // res.writeHead(400);
           res.send('Account already exists');
         }
       });

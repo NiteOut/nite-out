@@ -1,7 +1,8 @@
 <div class="signupPage">
 Signup Page
-  <form>
-    Username: <input type="text"><br>
-    Password: <input type="password">
+  <form ng-submit="sendData(userInfo)">
+    Username: <input type="email" ng-model="userInfo.email"><br>
+    Password: <input type="password" ng-model="userInfo.password">
+    <input style="visibility:hidden" type="submit">
   </form>
 </div>
