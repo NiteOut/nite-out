@@ -14,8 +14,9 @@ angular.module('nite-out.showtimes', ['ui.router'])
 .controller('showtimesController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
   $scope.moviesStuff = Movies.selected.movies; 
 
-  $scope.buyTicket = function(showtime) {
-    Movies.selectedShowtime = showtime;
+  $scope.buyTicket = function(movie, showtime) {
+    Movies.selectedMovie = movie;
+    Movies.selectedTime = showtime;
     $state.go('main.buyTicket');
   };
 
