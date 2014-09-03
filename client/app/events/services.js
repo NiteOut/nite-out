@@ -30,7 +30,8 @@ angular.module('nite-out.eventFactory', [])
           url: item.event.url,
           date: item.event.start_date,
           latitude: item.event.venue.latitude,
-          longitude: item.event.venue.longitude
+          longitude: item.event.venue.longitude,
+          icon: '/assets/marker.png'
         };
         events.push(event);
       });

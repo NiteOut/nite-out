@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nite-out.events', ['ui.router', 'google-maps'])
+angular.module('nite-out.events', ['ui.router'])
 
 // Configure out state using ui.router
 .config(['$stateProvider', function($stateProvider) {

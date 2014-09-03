@@ -35,26 +35,7 @@ angular.module('nite-out.restaurants', ['ui.router'])
   // setting map options through the google-map directive interface
   $scope.setCenter = function(restaurant){
     // async Geocoder API call
-    var address = restaurant.address +', ' + restaurant.city;
-    Mapper.setCenter(address);
-  };
-
-  $scope.select = function(place){
-    $scope.setCenter(place.vicinity);
-    window.scrollTo(0,0);
-    console.log('you selected', place.name);
-  };
-
-  // takes args: ('type of establishment', optional radius in meters, optional callback())
-  $scope.renderListOfPlaces = function(){
-    $scope.places = Mapper.getLocations();
-  };
-
-  window.doStuff = function(){
-    $scope.$apply(function(){
-      $scope.places = Mapper.getLocations();
-    });
-    $scope.renderListOfPlaces();
+    Mapper.setCenter(restaurant.address);
   };
 
 }]);

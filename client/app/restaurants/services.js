@@ -2,7 +2,7 @@
 
 angular.module('nite-out.restaurantFactory', [])
 
-.factory('Restaurants', ['$http', function($http){
+.factory('Restaurants', ['$http', 'Mapper', function($http, Mapper){
   var restaurants = [];
 
   // Our query to Opentable API, API is not-official as Opentable does
@@ -15,11 +15,20 @@ angular.module('nite-out.restaurantFactory', [])
       // policy.
       method: 'jsonp',
       url: 'http://opentable.herokuapp.com/api/restaurants?callback=JSON_CALLBACK',
-      params: {zip: zipcode},
+      params: {zip: zipcode, per_page: 100},
     })
-    .success(function(response) {
-      response.restaurants.forEach(function(item) {
-        restaurants.push(item);
+    .then(function(res) {
+      res.data.restaurants.forEach(function(item, index) {
+        var restaurant = {
+          id: index + 1,
+          name: item.name,
+          url: item.reserve_url,
+          phone: item.phone,
+          address: item.address + ', ' + item.city,
+        };
+        restaurant.latitude = Mapper.getLatLng(restaurant.address).latitude;
+        restaurant.longitude = Mapper.getLatLng(restaurant.address).longitude;
+        restaurants.push(restaurant);
       });
     });
   };
@@ -32,10 +41,10 @@ angular.module('nite-out.restaurantFactory', [])
       url: '/api/yelp',
       params: data,
     })
-    .success(function(response) {
+    .success(function(res) {
       // TODO: Handle error responses more gracefully and only display
       // meaningful responses.
-      console.log(response);
+      console.log(res);
     });
   };
 

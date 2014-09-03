@@ -96,22 +96,17 @@ angular.module('nite-out.mapFactory', [])
   };
 
   // google maps only accept latitude/longitude objects so geocoding an address is necessary.
-  var getLatLng = function(addressString, cb){
+  var getLatLng = function(addressString){
     var geolocation = {};
     // gecoder takes { address: string } as optional request object property
     var request = { address: addressString };
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode(request, function (response, status){
+
+     return geocoder.geocode(request, function (response, status){
       if(status === google.maps.GeocoderStatus.OK){
-        geolocation.lat = geolocation.latitude = response[0].geometry.location.lat();
-        geolocation.lng = geolocation.longitude = response[0].geometry.location.lng();
-        if(typeof cb === 'function'){
-          cb(geolocation);
-        } else {
-          console.error('getLatLng requires a callback( { latitude: number, longitude: number } )');
-        }
-      } else {
-        console.error('getLatLng was NOT successful at geocoding address');
+        geolocation.latitude = response[0].geometry.location.lat();
+        geolocation.longitude = response[0].geometry.location.lng();
+        return geolocation;
       }
     });
   };
