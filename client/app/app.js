@@ -39,4 +39,3 @@ angular.module('nite-out', [
   }
 })
 
-
