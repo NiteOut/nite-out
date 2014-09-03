@@ -1,15 +1,16 @@
 angular.module('nite-out.auth', ['ui.router'])
 
-.controller('AuthController', ['$scope', '$state', function($scope, $state) {
-  $scope.userInfo = {
-    userEmail: '',
-    password: ''
-  };
+.controller('AuthController', ['$scope', '$state', 'AuthRequests', function($scope, $state, AuthRequests) {
+  $scope.userInfo = {};
   $scope.loginPage = function() {
     $state.go('login');
   };
   $scope.signupPage = function() {
     $state.go('signup');
+  };
+
+  $scope.sendData = function(data) {
+    AuthRequests.loginInfo(data);
   };
 
 }])
