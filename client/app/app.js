@@ -29,7 +29,7 @@ angular.module('nite-out', [
     restrict: 'EA',
     replace: true,
     templateUrl: 'app/auth/loggedin.tpl.html'
-  }
+  };
 })
 
 .directive('needlogin', function() {
@@ -37,5 +37,5 @@ angular.module('nite-out', [
     restrict: 'EA',
     replace: true,
     templateUrl: 'app/auth/needlogin.tpl.html'
-  }
-})
+  };
+});
