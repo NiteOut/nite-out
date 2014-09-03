@@ -11,6 +11,6 @@ angular.module('nite-out.buyTicket', ['ui.router'])
     });
 }])
 
-.controller('buyTicketController', ['$scope', '$state', 'Movies', function($scope){
-    console.log("Hello world!");
+.controller('buyTicketController', ['$scope', function($scope){
+  $scope.text = "Hello World";
 }]);
