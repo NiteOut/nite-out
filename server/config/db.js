@@ -1,15 +1,9 @@
+'use strict';
+
 // Setup our connection to the MySQL database
 // that handles our user data.  
-var knex = require('knex')({
-    client: 'mysql',
-    connection: {
-      host     : '127.0.0.1',
-      user     : 'root',
-      password : '',
-      database : 'nite-out',
-      charset  : 'utf8'
-    }
-  });
+var sql = require('../../keys.js').mysql;
+var knex = require('knex')(sql);
 
 // Passing an instantiated knex instance.  Passing connection info
 // directly to bookshelf is now deprecated.
