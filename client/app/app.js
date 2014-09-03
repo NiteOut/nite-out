@@ -22,16 +22,11 @@ angular.module('nite-out', [
 
 
 // if logged in, then use this directive
-.directive('signedin', function() {
+.directive('loggedin', function() {
   return {
     restrict: 'EA',
     replace: true,
-    // need to replace template URL
-    templateUrl: 'app/auth/loggedin.html',
-    // template: '<div>hello</div>',
-    link: function(scope, element, attr) {
-      console.log('working');
-    }
+    templateUrl: 'app/auth/loggedin.html'
   }
 });
 

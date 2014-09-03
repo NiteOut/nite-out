@@ -67,3 +67,7 @@ h1, h3{
 a {
   color: #6C8A95;
 }
+
+.loggedin {
+  color: red;
+}
