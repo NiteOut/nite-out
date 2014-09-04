@@ -43,6 +43,8 @@ module.exports = {
   signupUser: function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
+    var first = req.body.first || null;
+    var last = req.body.last || null;
 
     // Create a new database model for the user, email and password are
     // currently the only required fields. UserIDs are automatically
@@ -57,6 +59,8 @@ module.exports = {
           var newUser = new User({
             email: email,
             password: password,
+            first_name: first,
+            last_name: last
           });
           newUser.save()
             .then(function(newUser) {
