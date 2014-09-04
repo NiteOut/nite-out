@@ -11,8 +11,7 @@
   <h1>Nite-Out</h1>
 
   <!-- NG-IF not updating when the $scope.loginStatus is updated -->
-  <div class="userStatus" ng-controller="AuthController">
-    <button ng-click="checkAuth()">TESTER</button>
+  <div class="user-status" ng-controller="AuthController">
     <needlogin ng-if="!loginStatus[0]"></needlogin>
     <loggedin ng-if="loginStatus[0]"></loggedin>
   </div>

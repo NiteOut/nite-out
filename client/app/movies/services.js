@@ -45,5 +45,3 @@ angular.module('nite-out.movieFactory', [])
     getTheaters: getTheaters
   };
 }]);
-
-// angular.module('nite-out.mo', [])

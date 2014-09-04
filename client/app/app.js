@@ -21,8 +21,6 @@ angular.module('nite-out', [
   $urlRouterProvider.otherwise('/main');
 }])
 
-
-
 // if logged in, then use this directive
 .directive('loggedin', function() {
   return {

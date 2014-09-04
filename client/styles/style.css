@@ -68,7 +68,10 @@ a {
   color: #6C8A95;
 }
 
-.userStatus {
-  color: red;
+.user-status {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  color: #6C8A95;
 }
 
