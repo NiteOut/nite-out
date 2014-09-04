@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "angular-ui-router": "~0.2.11",
-    "angular-google-maps": "~1.2.1"
+    "angular-google-maps": "~1.2.1",
+    "angular-morph": "*"
   }
 }

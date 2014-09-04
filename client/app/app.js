@@ -14,14 +14,13 @@ angular.module('nite-out', [
   'nite-out.eventFactory',
   'nite-out.restaurants',
   'nite-out.restaurantFactory',
+  'ngMorph',
   'ui.router'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/main');
 }])
-
-
 
 // if logged in, then use this directive
 .directive('loggedin', function() {

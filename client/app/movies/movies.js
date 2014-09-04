@@ -10,8 +10,11 @@ angular.module('nite-out.movies', ['ui.router'])
     });
 }])
 
-.controller('MoviesController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
+.controller('MoviesController', ['$scope', '$state', 'Movies', 'Mapper', function($scope, $state, Movies, Mapper){
+  $scope.map = Mapper.init;
   $scope.theaters = Movies.theaters;
+  $scope.fetched = Movies.fetched;
+
   $scope.toShowtimes = function(selected) {
     Movies.selected = selected;
     $state.go('main.showtimes');

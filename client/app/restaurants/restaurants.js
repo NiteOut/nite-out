@@ -13,7 +13,9 @@ angular.module('nite-out.restaurants', ['ui.router'])
 }])
 
 .controller('RestaurantsController', ['$scope', 'Restaurants', 'Mapper', function($scope, Restaurants, Mapper){
-  $scope.restaurants = Restaurants.restaurants;
+  $scope.map = Mapper.init;
+  $scope.restaurants = Restaurants;
+
   // Populate our restaurants array from Opentable
   Restaurants.getRestaurants(94102);
 
@@ -24,12 +26,9 @@ angular.module('nite-out.restaurants', ['ui.router'])
     Restaurants.getInfo(data);
   };
 
-  $scope.places = [];
-
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup
   // for changing options go to: https://angular-ui.github.io/angular-google-maps/#!/api
-  $scope.map = Mapper.init;
 
   // setting map options through the google-map directive interface
   $scope.setCenter = function(restaurant){

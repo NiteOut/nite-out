@@ -1,15 +1,9 @@
+'use strict';
+
 // Setup our connection to the MySQL database
 // that handles our user data.  
-var knex = require('knex')({
-    client: 'mysql',
-    connection: {
-      host     : '127.0.0.1',
-      user     : 'root',
-      password : '',
-      database : 'nite-out',
-      charset  : 'utf8'
-    }
-  });
+var sql = require('../../keys.js').mysql;
+var knex = require('knex')(sql);
 
 // Passing an instantiated knex instance.  Passing connection info
 // directly to bookshelf is now deprecated.
@@ -25,6 +19,7 @@ db.knex.schema.hasTable('users').then(function(exists) {
       user.string('password', 100);
       user.string('first_name', 100);
       user.string('last_name', 100);
+      user.string('token', 255);
       user.timestamps();
     }).then(function() {
       console.log('users created');

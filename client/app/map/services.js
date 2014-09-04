@@ -2,7 +2,7 @@
 
 angular.module('nite-out.mapFactory', [])
 
-.factory('Mapper', function(){
+.factory('Mapper',['$q', function($q){
 //////////////////////////////////////////////////////////////////////////////////////////
 //  map.html is set to render {{ object.name }} and {{ object.vicinity }} from Mapper.locations via controller.
 //  set Mapper.locations with an array by Mapper.setLocations() or just Mapper.locations = [{}...].
@@ -102,13 +102,18 @@ angular.module('nite-out.mapFactory', [])
     var request = { address: addressString };
     var geocoder = new google.maps.Geocoder();
 
-    return geocoder.geocode(request, function (response, status){
+    var defer = $q.defer();
+
+    geocoder.geocode(request, function (response, status){
       if(status === google.maps.GeocoderStatus.OK){
         geolocation.latitude = response[0].geometry.location.lat();
         geolocation.longitude = response[0].geometry.location.lng();
-        return geolocation;
+        return defer.resolve(geolocation);
       }
     });
+
+    return defer.promise;
+    
   };
 
   var setCenter = function(addressString){
@@ -189,9 +194,10 @@ angular.module('nite-out.mapFactory', [])
     setLocations: setLocations,
     setCenter: setCenter,
     findPlaces: findPlaces,
+    getLatLng: getLatLng,
 
     // each object in MarkerList.markers has a place property that references the original place object returned from google.
     MakerList: MarkerList
   };
 
-});
+}]);

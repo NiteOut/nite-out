@@ -1,6 +1,8 @@
+'use strict';
+
 angular.module('nite-out.authServices',[])
 
-.factory('AuthRequests', ['$http', '$window', '$state', function($http, $window, $state) {
+.factory('AuthRequests', ['$http', '$window', function($http, $window) {
   var setToken = function(token) {
     $window.localStorage.setItem('nite-out.user', token);
   };
@@ -8,13 +10,17 @@ angular.module('nite-out.authServices',[])
   var resolved = [$window.localStorage.getItem('nite-out.user') !== null];
 
   var signup = function(userData) {
+    resolved.splice(0);
+
     return $http({
       method: 'POST',
       url: '/users',
       data: userData
     })
     .success(function(res) {
+      console.log(res.user);
       setToken(res.token);
+      resolved.push(true);
     });
   };
 
@@ -27,6 +33,7 @@ angular.module('nite-out.authServices',[])
       params: userData
     })
     .success(function(res) {
+      console.log(res.user);
       setToken(res.token);
       resolved.push(true);
     });

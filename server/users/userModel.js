@@ -1,3 +1,5 @@
+'use strict';
+
 // Defining the user model and attaching several methods
 // which handle password checking for existing users and
 // hashing when registering new users.

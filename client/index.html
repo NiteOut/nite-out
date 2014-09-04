@@ -11,8 +11,7 @@
   <h1>Nite-Out</h1>
 
   <!-- NG-IF not updating when the $scope.loginStatus is updated -->
-  <div class="userStatus" ng-controller="AuthController">
-    <button ng-click="checkAuth()">TESTER</button>
+  <div class="user-status" ng-controller="AuthController">
     <needlogin ng-if="!loginStatus[0]"></needlogin>
     <loggedin ng-if="loginStatus[0]"></loggedin>
   </div>
@@ -28,15 +27,11 @@
 
   <!-- development requirements -->
   <script src="bower_components/angular/angular.js"></script>
-
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
-
   <script src="bower_components/lodash/dist/lodash.min.js"></script>
-
   <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
-
+  <script src="bower_components/angular-morph/dist/angular-morph.js"></script>
 
   <script src="app/auth/auth.js"></script>
   <script src="app/auth/authServices.js"></script>

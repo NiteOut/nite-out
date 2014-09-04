@@ -1,7 +1,8 @@
+'use strict';
+
 // Import the databse and the user model and collection for use
 // in accessing the database for user login/signup.
 var User = require('./userModel.js');
-var Users = require('./userCollection.js');
 var jwt = require('jwt-simple');
 
 // Here we hold all the methods that handle user login and signup.
@@ -18,8 +19,7 @@ module.exports = {
       .then(function(user) {
         if (!user) {
           // If the user does not exist, send back a bad request status.
-          // res.writeHead(400);
-          res.send('User does not exist');
+          next('User does not exist');
         } else {
           // User exists, call method to compare the supplied password
           // against the one supplied by the user.
@@ -28,7 +28,8 @@ module.exports = {
               // The password is a match, send back appropriate header
               // to client application, tokening will be handle by client.
               var token = jwt.encode(user, 'secret');
-              res.json({token: token});
+              user.set({token: token}).save();
+              res.json({token: token, user: user.get('first_name')});
             } else {
               // Unauthorized request status code sent back to client.
               next(new Error('Bad password'));
@@ -60,25 +61,33 @@ module.exports = {
           newUser.save()
             .then(function(newUser) {
               // Add the user to the collection of users.
-              Users.add(newUser);
               // Send created response to trigger client application to
               // issue an authorization token.
               var token = jwt.encode(user, 'secret');
-              res.json({token: token});
+              newUser.set({token: token}).save();
+              res.json({token: token, user: newUser.get('first_name')});
             });
         } else {
           // Send bad request header and inform the client that the user
           // already exists.
           // res.writeHead(400);
-          res.send('Account already exists');
+          next('Account already exists');
         }
       });
   },
 
   // Method for handling requests to edit user information. (PUT)
   editUser: function(req, res, next) {
-    console.log('put request on user api');
-    res.send('Changes made!');
+    var email = req.body.email;
+    var field = req.body.field;
+    var value = req.body.value;
+
+    new User({email: email})
+      .fetch()
+      .then(function(user) {
+        user.set(field, value).save();
+      });
+    next('Changes made!');
   },
 
 };
