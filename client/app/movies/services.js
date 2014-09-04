@@ -2,11 +2,10 @@
 
 angular.module('nite-out.movieFactory', [])
 
-.factory('Movies', ['$http', 'Mapper', function($http, Mapper){
+.factory('Movies', ['$http', 'Mapper', '$q', function($http, Mapper, $q){
   var theaters = [];
   var movies = [];
   var shows = [];
-  var fetched = false;
 
   var getTheaters = function(zipcode) {
     theaters.splice(0);
@@ -27,18 +26,26 @@ angular.module('nite-out.movieFactory', [])
         };
         theaters.push(theater);
       });
+
+      var promises = [];
       theaters.forEach(function(theater, index) {
-        Mapper.getLatLng(theater.address)
+        if (index >= 10) {
+          return;
+        }
+        promises.push(Mapper.getLatLng(theater.address)
           .then(function(data) {
             theaters[index].coords = data;
-          });
+            console.log(data);
+            return theaters[index];
+          }));
       });
+
+      return $q.all(promises);
     });
 
   };
 
   return {
-    fetched: fetched,
     theaters: theaters,
     movies: movies,
     shows: shows,

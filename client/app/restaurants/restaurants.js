@@ -2,7 +2,6 @@
 
 angular.module('nite-out.restaurants', ['ui.router'])
 
-// Configure out state using ui.router
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider
     .state('main.restaurants', {

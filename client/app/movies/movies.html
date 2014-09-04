@@ -1,7 +1,7 @@
 <h3>Theaters</h3>
 <center>
   <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-    <markers ng-if="fetched" models="theaters" coords="'coords'" fit="'true'" icon="'icon'"></markers>
+    <markers models="theaters" coords="'coords'" fit="'true'" icon="'icon'"></markers>
   </google-map>
 </center>
 <button ng-click="fetched = !fetched">{{fetched}}</button>
