@@ -17,7 +17,7 @@ angular.module('nite-out.restaurantFactory', [])
       // policy.
       method: 'jsonp',
       url: 'http://opentable.herokuapp.com/api/restaurants?callback=JSON_CALLBACK',
-      params: {zip: zipcode, per_page: 5}
+      params: {zip: zipcode, per_page: 100}
     })
     .then(function(res) {
       res.data.restaurants.forEach(function(item, index) {

@@ -1,3 +1,5 @@
+'use strict';
+
 // Import the databse and the user model and collection for use
 // in accessing the database for user login/signup.
 var User = require('./userModel.js');
@@ -70,7 +72,7 @@ module.exports = {
           // Send bad request header and inform the client that the user
           // already exists.
           // res.writeHead(400);
-          res.send('Account already exists');
+          res.next('Account already exists');
         }
       });
   },
