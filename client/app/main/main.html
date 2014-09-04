@@ -5,6 +5,12 @@
     <a ui-sref="main.restaurants">Restaurants</a>
     <form ng-submit="conductSearch(input)" novalidate>
       <input class="search-box" type="text" ng-model="input" autofocus/>
+      <select class="select-box">
+        <option value="movie">Movies</option>
+        <option value="concert">Concerts</option>
+        <option value="restaurant">Restaurants</option>
+        <option value="bar">Bars</option>
+      </select>
     </form>
   </div>
   <div ui-view></div>
