@@ -33,6 +33,10 @@ angular.module('nite-out.auth', ['ui.router'])
   $scope.checkAuth = function() {
     console.log($scope.loginStatus);
   };
+
+  $scope.signout = function() {
+    AuthRequests.signout();
+  };
 }])
 
 .config(['$stateProvider', function($stateProvider) {
