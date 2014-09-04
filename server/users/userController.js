@@ -19,8 +19,7 @@ module.exports = {
       .then(function(user) {
         if (!user) {
           // If the user does not exist, send back a bad request status.
-          // res.writeHead(400);
-          res.send('User does not exist');
+          next('User does not exist');
         } else {
           // User exists, call method to compare the supplied password
           // against the one supplied by the user.

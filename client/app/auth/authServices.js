@@ -18,6 +18,7 @@ angular.module('nite-out.authServices',[])
       data: userData
     })
     .success(function(res) {
+      console.log(res.user);
       setToken(res.token);
       resolved.push(true);
     });
@@ -32,6 +33,7 @@ angular.module('nite-out.authServices',[])
       params: userData
     })
     .success(function(res) {
+      console.log(res.user);
       setToken(res.token);
       resolved.push(true);
     });

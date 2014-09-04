@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.auth', ['ui.router'])
 
 .controller('AuthController', ['$scope', '$state', 'AuthRequests', '$window', function($scope, $state, AuthRequests, $window) {

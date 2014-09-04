@@ -14,6 +14,7 @@ angular.module('nite-out', [
   'nite-out.eventFactory',
   'nite-out.restaurants',
   'nite-out.restaurantFactory',
+  'ngMorph',
   'ui.router'
 ])
 
