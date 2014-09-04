@@ -3,7 +3,7 @@ angular.module('nite-out.auth', ['ui.router'])
 .controller('AuthController', ['$scope', '$state', 'AuthRequests', '$window', function($scope, $state, AuthRequests, $window) {
   $scope.userInfo = {};
 
-  $scope.loginStatus = $window.localStorage.getItem('nite-out.user') !== null;
+  $scope.loginStatus = AuthRequests.resolved;
 
   $scope.loginPage = function() {
     $state.go('login');
@@ -22,13 +22,14 @@ angular.module('nite-out.auth', ['ui.router'])
 
   $scope.getLoginData = function(data) {
     AuthRequests.userLogin(data)
-      .then(function() {
-        $scope.loginStatus = true;
-      });
+      // .then(function() {
+        // AuthRequests.resolved = true;
+        // $scope.loginStatus = AuthRequests.resolved;
+      // });
   };
 
   $scope.checkAuth = function() {
-    $scope.loginStatus = $window.localStorage.getItem('nite-out.user') !== null;
+    console.log($scope.loginStatus);
   };
 }])
 

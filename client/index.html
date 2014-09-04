@@ -13,8 +13,8 @@
   <!-- NG-IF not updating when the $scope.loginStatus is updated -->
   <div class="userStatus" ng-controller="AuthController">
     <button ng-click="checkAuth()">TESTER</button>
-    <needlogin ng-if="!loginStatus"></needlogin>
-    <loggedin ng-if="loginStatus"></loggedin>
+    <needlogin ng-if="!loginStatus[0]"></needlogin>
+    <loggedin ng-if="loginStatus[0]"></loggedin>
   </div>
 
   <div class="i-g">

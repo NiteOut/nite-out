@@ -5,6 +5,8 @@ angular.module('nite-out.authServices',[])
     $window.localStorage.setItem('nite-out.user', token);
   };
 
+  var resolved = [$window.localStorage.getItem('nite-out.user') !== null];
+
   var signup = function(userData) {
     return $http({
       method: 'POST',
@@ -17,13 +19,16 @@ angular.module('nite-out.authServices',[])
   };
 
   var userLogin = function(userData) {
+    resolved.splice(0);
+
     return $http({
       method: 'GET',
       url: '/users',
       params: userData
     })
-    .then(function(res) {
-      setToken(res.data.token);
+    .success(function(res) {
+      setToken(res.token);
+      resolved.push(true);
     });
   };
 
@@ -32,6 +37,7 @@ angular.module('nite-out.authServices',[])
   };
 
   return {
+    resolved: resolved,
     signout: signout,
     signup: signup,
     userLogin: userLogin
