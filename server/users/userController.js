@@ -29,7 +29,7 @@ module.exports = {
               // The password is a match, send back appropriate header
               // to client application, tokening will be handle by client.
               var token = jwt.encode(user, 'secret');
-              user.set({token: token});
+              user.set({token: token}).save();
               res.json({token: token, user: user.get('first_name')});
             } else {
               // Unauthorized request status code sent back to client.
@@ -65,22 +65,30 @@ module.exports = {
               // Send created response to trigger client application to
               // issue an authorization token.
               var token = jwt.encode(user, 'secret');
-              newUser.set({token: token});
+              newUser.set({token: token}).save();
               res.json({token: token, user: newUser.get('first_name')});
             });
         } else {
           // Send bad request header and inform the client that the user
           // already exists.
           // res.writeHead(400);
-          res.next('Account already exists');
+          next('Account already exists');
         }
       });
   },
 
   // Method for handling requests to edit user information. (PUT)
   editUser: function(req, res, next) {
-    console.log('put request on user api');
-    res.send('Changes made!');
+    var email = req.body.email;
+    var field = req.body.field;
+    var value = req.body.value;
+
+    new User({email: email})
+      .fetch()
+      .then(function(user) {
+        user.set(field, value).save();
+      });
+    next('Changes made!');
   },
 
 };
