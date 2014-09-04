@@ -3,7 +3,7 @@
     <a ui-sref="main.movies">Movies</a>
     <a ui-sref="main.events">Events</a>
     <a ui-sref="main.restaurants">Restaurants</a>
-    <form ng-submit="renderPage()" novalidate>
+    <form ng-submit="conductSearch(input)" novalidate>
       <input class="search-box" type="text" ng-model="input" autofocus/>
     </form>
   </div>

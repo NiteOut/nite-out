@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('nite-out.main', ['ui.router'])
+angular.module('nite-out.main', [
+  'ui.router',
+  'nite-out.search'
+  ])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider
@@ -12,9 +15,13 @@ angular.module('nite-out.main', ['ui.router'])
 }])
 
 
-.controller('MainController', ['$scope', '$state', function($scope, $state) {
+.controller('MainController', ['$scope', '$state', 'Search', function($scope, $state, Search) {
   $scope.input = '';
-  $scope.renderPage = function() {
+  $scope.conductSearch = function(search, choice) {
+    // handles redirecting based on appropriate search
+    Search.current = search;
+    $scope.input = '';
+    // var area = 'main.' + choice;
     $state.go('main.movies');
   };
 }]);

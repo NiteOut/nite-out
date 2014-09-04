@@ -1,3 +1,5 @@
+'use strict';
+
 // userController houses relevant methods for handling requests
 var userController = require('./userController.js');
 
