@@ -4,18 +4,20 @@ angular.module('nite-out.restaurantFactory', [])
 
 .factory('Restaurants', ['$http', 'Mapper', function($http, Mapper){
   var restaurants = [];
+  var fetched = false;
 
   // Our query to Opentable API, API is not-official as Opentable does
   // not currently have a public facing API.
   var getRestaurants = function(zipcode) {
-    // Restaurants array is spliced in order to clear it of previous entries.
-    restaurants.splice(0);
+    // Restaurants array is overwritten without dropping reference.
+    angular.copy([], restaurants);
+
     return $http({
       // Conducted as a jsonp request in order to circumvent same-origin
       // policy.
       method: 'jsonp',
       url: 'http://opentable.herokuapp.com/api/restaurants?callback=JSON_CALLBACK',
-      params: {zip: zipcode, per_page: 100}
+      params: {zip: zipcode, per_page: 5}
     })
     .then(function(res) {
       res.data.restaurants.forEach(function(item, index) {
@@ -28,13 +30,15 @@ angular.module('nite-out.restaurantFactory', [])
         };
         restaurants.push(restaurant);
       });
-        restaurants.forEach(function(restaurant, index) {
-          Mapper.getLatLng(restaurant.address)
-            .then(function(data) {
-              restaurants[index].coords = data;
-            });
-        });
+      restaurants.forEach(function(restaurant, index) {
+        Mapper.getLatLng(restaurant.address)
+          .then(function(data) {
+            restaurants[index].coords = data;
+          });
       });
+      return restaurants;
+    });
+
   };
 
   // Conduct our api call to the server.
@@ -54,6 +58,7 @@ angular.module('nite-out.restaurantFactory', [])
 
   // Return an object filled with our shared methods and data.
   return {
+    fetched: fetched,
     restaurants: restaurants,
     getRestaurants: getRestaurants,
     getInfo: getInfo,
