@@ -8,23 +8,30 @@ angular.module('nite-out.restaurants', ['ui.router'])
     .state('main.restaurants', {
       url: '/restaurants',
       templateUrl: 'app/restaurants/restaurants.html',
-      controller: 'RestaurantsController'
+      controller: 'RestaurantsController',
+      resolve: {
+        restaurants: function(Restaurants) {
+          return Restaurants.getRestaurants(94102)
+          .then(function(list) {
+            return list;
+          });
+        }
+      }
     });
 }])
 
-.controller('RestaurantsController', ['$scope', 'Restaurants', 'Mapper', function($scope, Restaurants, Mapper){
+.controller('RestaurantsController', ['$scope', 'restaurants', 'Mapper', function($scope, restaurants, Mapper){
   $scope.map = Mapper.init;
-  $scope.restaurants = Restaurants;
-
+  $scope.restaurants = restaurants;
   // Populate our restaurants array from Opentable
-  Restaurants.getRestaurants(94102);
+  // Restaurants.getRestaurants(94102);
 
   // Query Yelp API for more information on our restaurant
-  $scope.getInfo = function() {
-    console.log(this.restaurant);
-    var data = {name: this.restaurant.name, location: this.restaurant.city};
-    Restaurants.getInfo(data);
-  };
+  // $scope.getInfo = function() {
+  //   console.log(this.restaurant);
+  //   var data = {name: this.restaurant.name, location: this.restaurant.city};
+  //   Restaurants.getInfo(data);
+  // };
 
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup
