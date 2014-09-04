@@ -9,11 +9,21 @@ angular.module('nite-out.restaurants', ['ui.router'])
       templateUrl: 'app/restaurants/restaurants.html',
       controller: 'RestaurantsController',
       resolve: {
-        restaurants: function(Restaurants) {
-          return Restaurants.getRestaurants(94102)
+        restaurants: function(Restaurants, Search) {
+          return Restaurants.getRestaurants(Search.current)
           .then(function(list) {
             return list;
           });
+        }
+      },
+      data: {
+        loading: function() {
+          var el = angular.element(document.getElementById('main'));
+          el.html(
+            '<div class="spinner"><div class="rect1"></div>' +
+            '<div class="rect2"></div><div class="rect3"></div>' +
+            '<div class="rect4"></div><div class="rect5"></div></div>'
+            );
         }
       }
     });
