@@ -2,7 +2,7 @@
 
 angular.module('nite-out.authServices',[])
 
-.factory('AuthRequests', ['$http', '$window', function($http, $window) {
+.factory('AuthRequests', ['$http', '$window', '$state', function($http, $window, $state) {
   var setToken = function(token) {
     $window.localStorage.setItem('nite-out.user', token);
   };
