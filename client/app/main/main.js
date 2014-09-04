@@ -22,7 +22,7 @@ angular.module('nite-out.main', [
     Search.current = search;
     Search.type = choice;
     $scope.input = '';
-    if (choice === 'concerts' || 'sports') {
+    if (choice === 'music' || choice === 'sports') {
       $state.go('main.events');
     } else {
       $state.go('main.' + choice);

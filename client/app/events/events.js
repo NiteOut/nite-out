@@ -8,15 +8,20 @@ angular.module('nite-out.events', ['ui.router'])
     .state('main.events', {
       url: '/events',
       templateUrl: 'app/events/events.html',
+      resolve: {
+        events: function(Events, Search) {
+          return Events.getEvents(Search.current, Search.type);
+        }
+      },
       controller: 'EventsController'
     });
 }])
 
-.controller('EventsController', ['$scope', 'Events', 'Mapper', 'Search', function($scope, Events, Mapper, Search){
-  $scope.events = Events.events;
+.controller('EventsController', ['$scope', 'events', 'Mapper', function($scope, events, Mapper) {
+  $scope.events = events;
   
   // Fetch our events to update $scope.events
-  Events.getEvents(Search.current, Search.type);
+  
 
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup

@@ -34,8 +34,8 @@ angular.module('nite-out.eventFactory', [])
           longitude: item.event.venue.longitude,
         };
         events.push(event);
-        
       });
+      return events;
     });
   };
 
