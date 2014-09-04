@@ -2,7 +2,7 @@
 
 angular.module('nite-out.main', [
   'ui.router',
-  'nite-out.search'
+  'nite-out.services'
   ])
 
 .config(['$stateProvider', function($stateProvider) {
@@ -14,10 +14,10 @@ angular.module('nite-out.main', [
     });
 }])
 
-
 .controller('MainController', ['$scope', '$state', 'Search', function($scope, $state, Search) {
   $scope.input = '';
   $scope.conductSearch = function(search, choice) {
+
     // handles redirecting based on appropriate search
     Search.current = search;
     Search.type = choice;
