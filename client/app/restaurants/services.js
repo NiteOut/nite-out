@@ -2,9 +2,8 @@
 
 angular.module('nite-out.restaurantFactory', [])
 
-.factory('Restaurants', ['$http', 'Mapper', function($http, Mapper){
+.factory('Restaurants', ['$http', '$q', 'Mapper', function($http, $q, Mapper){
   var restaurants = [];
-  var fetched = false;
 
   // Our query to Opentable API, API is not-official as Opentable does
   // not currently have a public facing API.
@@ -17,7 +16,9 @@ angular.module('nite-out.restaurantFactory', [])
       // policy.
       method: 'jsonp',
       url: 'http://opentable.herokuapp.com/api/restaurants?callback=JSON_CALLBACK',
-      params: {zip: zipcode, per_page: 100}
+      // Limited to 10 due to timeout when searching for more results
+      // TODO: Added pagination
+      params: {zip: zipcode, per_page: 10}
     })
     .then(function(res) {
       res.data.restaurants.forEach(function(item, index) {
@@ -30,37 +31,23 @@ angular.module('nite-out.restaurantFactory', [])
         };
         restaurants.push(restaurant);
       });
+      var promises = [];
       restaurants.forEach(function(restaurant, index) {
-        Mapper.getLatLng(restaurant.address)
+        promises.push(Mapper.getLatLng(restaurant.address)
           .then(function(data) {
             restaurants[index].coords = data;
-          });
+            return restaurants[index];
+          }));
       });
-      return restaurants;
+
+      return $q.all(promises);
     });
 
-  };
-
-  // Conduct our api call to the server.
-  // TODO: Handle the entire api call on the client-side.
-  var getInfo = function(data) {
-    return $http({
-      method: 'GET',
-      url: '/api/yelp',
-      params: data,
-    })
-    .success(function(res) {
-      // TODO: Handle error responses more gracefully and only display
-      // meaningful responses.
-      console.log(res);
-    });
   };
 
   // Return an object filled with our shared methods and data.
   return {
-    fetched: fetched,
     restaurants: restaurants,
     getRestaurants: getRestaurants,
-    getInfo: getInfo,
   };
 }]);
