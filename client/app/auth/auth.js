@@ -14,13 +14,22 @@ angular.module('nite-out.auth', ['ui.router'])
   };
 
   $scope.postSignupData = function(data) {
-    AuthRequests.signup(data);
+    AuthRequests.signup(data)
+      .then(function() {
+        $scope.checkAuth();
+      });
   };
 
   $scope.getLoginData = function(data) {
-    AuthRequests.userLogin(data);
+    AuthRequests.userLogin(data)
+      .then(function() {
+        $scope.loginStatus = true;
+      });
   };
 
+  $scope.checkAuth = function() {
+    $scope.loginStatus = $window.localStorage.getItem('nite-out.user') !== null;
+  };
 }])
 
 .config(['$stateProvider', function($stateProvider) {

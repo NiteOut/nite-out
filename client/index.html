@@ -10,9 +10,11 @@
 <body ng-app='nite-out'>
   <h1>Nite-Out</h1>
 
+  <!-- NG-IF not updating when the $scope.loginStatus is updated -->
   <div class="userStatus" ng-controller="AuthController">
-    <loggedin ng-if="loginStatus"></loggedin>
+    <button ng-click="checkAuth()">TESTER</button>
     <needlogin ng-if="!loginStatus"></needlogin>
+    <loggedin ng-if="loginStatus"></loggedin>
   </div>
 
   <div class="i-g">
