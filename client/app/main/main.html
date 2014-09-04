@@ -1,15 +1,16 @@
 <div id="container">
   <div class="search-bar">
     <form ng-submit="conductSearch(input, type)" novalidate>
-      <input class="search-box" type="text" ng-model="input" autofocus/>
-      <select class="select-box" ng-model="type">
-        <option value="movies" selected>Movies</option>
+      <input class="search-box" type="text" ng-model="input" required autofocus/>
+      <select class="select-box" ng-model="type" required>
+        <option value="movies" default>Movies</option>
         <option value="music">Concerts</option>
         <option value="restaurants">Restaurants</option>
         <option value="sports">Sports</option>
       </select>
     </form>
   </div>
-  <div ui-view></div>
+  <div id="main" ui-view></div>
+
 </div>
 

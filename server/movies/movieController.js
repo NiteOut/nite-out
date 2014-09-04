@@ -1,3 +1,5 @@
+'use strict';
+
 // Holds all of the helper methods needed to manage calls
 // to our movies api.  Keeping our methods seperate allows
 // different api to access these methods in the event
@@ -22,8 +24,7 @@ module.exports = {
       // return error code client
       if (error) {
         console.error(error);
-        response.writeHead(400);
-        res.json({results: [error]});
+        next('An error occured');
       } 
       if (result) {
         // Results are returned as {zipcode: #, results: []}.
@@ -39,7 +40,7 @@ module.exports = {
         shows.getTheaters(function(error, theatres) {
           if (error) {
             console.error(error);
-            res.json({results: [error]});
+            next('No matching results');
           }
           Movies.create({zipcode: zipCode, results: theatres});
           res.json({results: theatres});

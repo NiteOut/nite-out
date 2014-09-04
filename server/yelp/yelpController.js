@@ -23,8 +23,7 @@ module.exports = {
       // an error handling the request.
       if(error) {
         console.log(error);
-        res.writeHead(500);
-        res.end('There was an error processing your request');
+        next('There was an error processing your request');
       } else {
         // Return the business information resulting from the Yelp query
         res.json(data);

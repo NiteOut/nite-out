@@ -17,8 +17,33 @@ angular.module('nite-out', [
   'ui.router'
 ])
 
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$urlRouterProvider', function($urlRouterProvider) {
   $urlRouterProvider.otherwise('/main');
+}])
+
+.run(['$rootScope', function($rootScope) {
+  $rootScope.$on('$stateChangeStart', function(ev, toState) {
+    if (toState.data) {
+      check(toState);
+    }
+  });
+
+  var check = function(toState) {
+    if (checkLoading(toState)) {
+      executeLoading(toState);
+    }
+  };
+
+  var executeLoading = function(toState) {
+    toState.data.loading();
+  };
+
+  var checkLoading = function(toState) {
+    if (toState.data) {
+      return (toState.data.loading !== undefined || toState.data.loading !== null) && typeof toState.data.loading === "function";
+    }
+    return false;
+  };
 }])
 
 // if logged in, then use this directive
