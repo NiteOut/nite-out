@@ -12,7 +12,6 @@ angular.module('nite-out.movies', ['ui.router'])
         theaters: function(Movies) {
           return Movies.getTheaters(94102)
           .then(function(list) {
-            console.log(list);
             return list;
           });
         }

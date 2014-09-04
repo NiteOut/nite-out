@@ -22,7 +22,8 @@ angular.module('nite-out.movieFactory', [])
           name: item.name,
           phone: item.phoneNumber,
           address: item.address,
-          movies: item.movies
+          movies: item.movies,
+          icon: '/assets/cinema.png'
         };
         theaters.push(theater);
       });
@@ -35,7 +36,6 @@ angular.module('nite-out.movieFactory', [])
         promises.push(Mapper.getLatLng(theater.address)
           .then(function(data) {
             theaters[index].coords = data;
-            console.log(data);
             return theaters[index];
           }));
       });

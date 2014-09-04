@@ -1,10 +1,9 @@
 <h3>Theaters</h3>
 <center>
   <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-    <markers models="theaters" coords="'coords'" fit="'true'" icon="'icon'"></markers>
+    <markers models="theaters" coords="'coords'" icon="'icon'"></markers>
   </google-map>
 </center>
-<button ng-click="fetched = !fetched">{{fetched}}</button>
 <div class="event" ng-repeat="theater in theaters" ng-click="toShowtimes(theater)">
   <span class="title">{{theater.name}}</span></br>
   <div>Phone: {{theater.phoneNumber}}</div>
