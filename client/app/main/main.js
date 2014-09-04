@@ -18,3 +18,4 @@ angular.module('nite-out.main', ['ui.router'])
     $state.go('main.movies');
   };
 }]);
+

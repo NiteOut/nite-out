@@ -67,3 +67,8 @@ h1, h3{
 a {
   color: #6C8A95;
 }
+
+.userStatus {
+  color: red;
+}
+

@@ -13,7 +13,8 @@
     "mongoose": "^3.8.15",
     "mysql": "^2.4.3",
     "showtimes": "^0.3.0",
-    "yelp": "^0.1.1"
+    "yelp": "^0.1.1",
+    "jwt-simple": "~0.2.0"
   },
   "devDependencies": {
     "karma": "^0.12.23",
