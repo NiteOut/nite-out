@@ -9,8 +9,8 @@ angular.module('nite-out.movies', ['ui.router'])
       templateUrl: 'app/movies/movies.html',
       controller: 'MoviesController',
       resolve: {
-        theaters: function(Movies) {
-          return Movies.getTheaters(94102)
+        theaters: function(Movies, Search) {
+          return Movies.getTheaters(Search.current)
           .then(function(list) {
             return list;
           });
