@@ -96,6 +96,7 @@ angular.module('nite-out.mapFactory', [])
   };
 
   // google maps only accept latitude/longitude objects so geocoding an address is necessary.
+  // async Geocoder() call is promisified using $q
   var getLatLng = function(addressString){
     var geolocation = {};
     // gecoder takes { address: string } as optional request object property
@@ -106,19 +107,22 @@ angular.module('nite-out.mapFactory', [])
 
     geocoder.geocode(request, function (response, status){
       if(status === google.maps.GeocoderStatus.OK){
-        geolocation.latitude = response[0].geometry.location.lat();
-        geolocation.longitude = response[0].geometry.location.lng();
-        return defer.resolve(geolocation);
+        // some functions look for a {lng: #, lat: #} and others a {longitude: # latitude: #} so this object stores both.
+        geolocation.lat = geolocation.latitude = response[0].geometry.location.lat();
+        geolocation.lng = geolocation.longitude = response[0].geometry.location.lng();
+        defer.resolve(geolocation);
+      } else {
+        defer.reject(geolocation);
       }
     });
 
     return defer.promise;
-    
+
   };
 
   var setCenter = function(addressString){
     if(gMap){
-      getLatLng(addressString, function (geolocation){
+      getLatLng(addressString).then(function (geolocation){
         gMap.setCenter(geolocation);
       });
     } else {
