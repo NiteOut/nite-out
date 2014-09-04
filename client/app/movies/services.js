@@ -8,7 +8,7 @@ angular.module('nite-out.movieFactory', [])
   var shows = [];
 
   var getTheaters = function(zipcode) {
-    theaters.splice(0);
+    angular.copy([], theaters);
 
     return $http({
       method: 'GET',
