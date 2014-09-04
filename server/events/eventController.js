@@ -1,3 +1,5 @@
+'use strict';
+
 // Holds all of the helper methods needed to manage calls
 // to our events api.  Keeping our methods seperate allows
 // different api to access these methods in the event
@@ -16,7 +18,7 @@ module.exports = {
     var params = {
       within: 25,
       // Default to a concert event if no keyword is provided
-      keywords: req.query.keyword || 'concert',
+      category: req.query.category,
       postal_code: req.query.zipcode,
       max: 10
     };

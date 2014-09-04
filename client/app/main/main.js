@@ -20,9 +20,13 @@ angular.module('nite-out.main', [
   $scope.conductSearch = function(search, choice) {
     // handles redirecting based on appropriate search
     Search.current = search;
+    Search.type = choice;
     $scope.input = '';
-    // var area = 'main.' + choice;
-    $state.go('main.movies');
+    if (choice === 'concerts' || 'sports') {
+      $state.go('main.events');
+    } else {
+      $state.go('main.' + choice);
+    }
   };
 }]);
 

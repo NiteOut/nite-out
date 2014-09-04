@@ -4,7 +4,10 @@ angular.module('nite-out.search', [])
 
 .factory('Search', [function(){
   var current = '';
+  var type = '';
+  
   return {
-    current: current
+    current: current,
+    type: type
   };
 }]);

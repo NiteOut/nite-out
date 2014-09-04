@@ -3,13 +3,13 @@
     <a ui-sref="main.movies">Movies</a>
     <a ui-sref="main.events">Events</a>
     <a ui-sref="main.restaurants">Restaurants</a>
-    <form ng-submit="conductSearch(input)" novalidate>
+    <form ng-submit="conductSearch(input, type)" novalidate>
       <input class="search-box" type="text" ng-model="input" autofocus/>
-      <select class="select-box">
-        <option value="movie">Movies</option>
-        <option value="concert">Concerts</option>
-        <option value="restaurant">Restaurants</option>
-        <option value="bar">Bars</option>
+      <select class="select-box" ng-model="type">
+        <option value="movies" selected>Movies</option>
+        <option value="music">Concerts</option>
+        <option value="restaurants">Restaurants</option>
+        <option value="sports">Sports</option>
       </select>
     </form>
   </div>

@@ -6,7 +6,7 @@ angular.module('nite-out.eventFactory', [])
   // Our factory holds all shared data returned from the server query
   var events = [];
 
-  var getEvents = function(zipcode) {
+  var getEvents = function(zipcode, category) {
     // Events array is spliced in order to clear it of previous events.
     events.splice(0);
 
@@ -17,6 +17,7 @@ angular.module('nite-out.eventFactory', [])
       url: '/api/events',
       params: {
         zipcode: zipcode,
+        category: category
       }
     })
     .then(function(res) {

@@ -9,8 +9,8 @@ angular.module('nite-out.restaurants', ['ui.router'])
       templateUrl: 'app/restaurants/restaurants.html',
       controller: 'RestaurantsController',
       resolve: {
-        restaurants: function(Restaurants) {
-          return Restaurants.getRestaurants(94102)
+        restaurants: function(Restaurants, Search) {
+          return Restaurants.getRestaurants(Search.current)
           .then(function(list) {
             return list;
           });
