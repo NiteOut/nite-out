@@ -2,18 +2,21 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Nite-Out</title>
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <title>NiteOut</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
   <link rel="stylesheet" type="text/css" href="styles/icecream-grid.css" />
 </head>
 <body ng-app='nite-out'>
-  <h1>Nite-Out</h1>
+  <h1 ui-sref="main">NiteOut</h1>
 
   <!-- NG-IF not updating when the $scope.loginStatus is updated -->
   <div class="user-status" ng-controller="AuthController">
     <needlogin ng-if="!loginStatus[0]"></needlogin>
     <loggedin ng-if="loginStatus[0]"></loggedin>
+    <modal-dialog show="loginShown" action="getLoginData(userInfo)" template-url="app/auth/loginPage.html"></modal-dialog>
+    <modal-dialog show="signupShown" action="postSignupData(userInfo)" template-url="app/auth/signupPage.html"></modal-dialog>
   </div>
 
   <div class="i-g">
@@ -23,10 +26,6 @@
     <div class="i-8" ui-view></div>
     <div class="i-2"></div>
   </div>
-
-  <!-- <span> to be added to main page later
-    <niteOutCart></niteOutCart>
-  </span> -->
 
   <!-- distribution requirements -->
   <!-- <script src="dist/build.js"></script> -->
@@ -49,11 +48,10 @@
   <script src="app/restaurants/services.js"></script>
   <script src="app/movies/movies.js"></script>
   <script src="app/movies/services.js"></script>
+  <script src="app/movies/showtimes.js"></script>
   <script src="app/cart/cart.js"></script>
   <script src="app/main/main.js"></script>
   <script src="app/main/services.js"></script>
   <script src="app/app.js"></script>
-
-  <script src="app/movies/showtimes.js"></script>
 </body>
 </html>

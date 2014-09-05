@@ -68,7 +68,6 @@ module.exports = {
               // Send created response to trigger client application to
               // issue an authorization token.
               var token = jwt.encode(user, 'secret');
-              newUser.set({token: token}).save();
               res.json({token: token, user: newUser.get('first_name')});
             });
         } else {

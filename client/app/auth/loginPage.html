@@ -1,8 +1,14 @@
-<div class="loginPage">
-  Login Page
-  <form ng-submit="getLoginData(userInfo)">
-    Email: <input type="email" ng-model="userInfo.email" required><br>
-    Password: <input type="password" ng-model="userInfo.password" required>
-    <input style="visibility:hidden" type="submit">
-  </form>
+<div class="ng-modal" ng-show="show">
+  <div class="ng-modal-overlay" ng-click="hideModal()"></div>
+  <div class="ng-modal-dialog" ng-style="dialogStyle">
+    <div class="ng-modal-close" ng-click="hideModal()">X</div>
+    <div class="ng-modal-dialog-content">
+      <h3>Login</h3>
+      <form ng-submit="action({userInfo: userInfo}); hideModal()">
+        <div>Email:</br><input type="email" ng-model="userInfo.email" required></div>
+        <div>Password:</br><input type="password" ng-model="userInfo.password" required></div>
+        <input style="visibility:hidden" type="submit">
+      </form>
+    </div>
+  </div>
 </div>

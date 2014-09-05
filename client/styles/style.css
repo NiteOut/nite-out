@@ -1,6 +1,6 @@
 body {
   background-color: #202020;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .angular-google-map-container {
@@ -16,6 +16,7 @@ body {
 }
 
 h1, h3{
+  font-family: 'Montserrat Alternates', sans-serif;
   text-align: center;
   color: #F0A83A;
 }
@@ -72,11 +73,7 @@ a {
   position: absolute;
   top: 0px;
   right: 5px;
-  color: red;
-}
-
-.loginPage, .signupPage {
-  color:red;
+  color: #6C8A95;
 }
 
 .spinner {
@@ -88,12 +85,10 @@ a {
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: #F0A83A;
   height: 100%;
   width: 6px;
-  padding: 1px;
   display: inline-block;
-  
   -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
   animation: stretchdelay 1.2s infinite ease-in-out;
 }
@@ -139,4 +134,48 @@ a {
 
 #cart {
   overflow: auto;
+
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position: fixed;
+  z-index:9999;
+  top: 0px;
+  left: 0px;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: fixed;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  background-color: #202020;
+  box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+  padding:10px;
+  color: #6C8A95;
+  text-align: left;
+}
+
+.ng-modal-dialog-content input{
+  width: 60%;
+}
+.ng-modal-close {
+  position: fixed;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
 }
