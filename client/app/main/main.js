@@ -15,6 +15,7 @@ angular.module('nite-out.main', [
 
 .controller('MainController', ['$scope', '$state', 'Search', function($scope, $state, Search) {
   $scope.input = '';
+  
   $scope.conductSearch = function(search, choice) {
 
     // handles redirecting based on appropriate search

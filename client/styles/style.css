@@ -69,6 +69,16 @@ a {
   color: #6C8A95;
 }
 
+.home-button {
+  padding: 5px;
+  border: 1px solid #6C8A95;
+}
+
+.home-button:hover {
+  border: 1px solid red;
+  color: red;
+}
+
 .user-status {
   position: absolute;
   top: 0px;

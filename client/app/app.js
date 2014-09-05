@@ -10,6 +10,7 @@ angular.module('nite-out', [
   'nite-out.movieFactory',
   'nite-out.showtimes',
   'nite-out.cart',
+  'nite-out.mycart',
   'nite-out.map',
   'nite-out.mapFactory',
   'nite-out.events',
@@ -80,7 +81,7 @@ angular.module('nite-out', [
       action: '&',
     },
     replace: true, // Replace with the template below
-    link: function(scope, element, attrs) {
+    link: function(scope) {
       scope.userInfo = {};
       scope.hideModal = function() {
         scope.show = false;
