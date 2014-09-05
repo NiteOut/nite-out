@@ -133,6 +133,6 @@ a {
   }
 }
 
-.cart {
+.cart, .checkout, .shopping {
   color: red;
 }
