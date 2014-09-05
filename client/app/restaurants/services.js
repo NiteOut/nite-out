@@ -27,7 +27,8 @@ angular.module('nite-out.restaurantFactory', [])
           name: item.name,
           url: item.reserve_url,
           phone: item.phone,
-          address: item.address + ', ' + item.city
+          address: item.address + ', ' + item.city,
+          icon: '/assets/numberedMarkers/number_'+(index+1)+'.png'
         };
         restaurants.push(restaurant);
       });

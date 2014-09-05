@@ -70,9 +70,11 @@ a {
 }
 
 .home-button {
+  color: #6C8A95;
   font-size: .8em;
   padding: 5px;
   border: 1px solid #6C8A95;
+  text-decoration: none;
 }
 
 .home-button:hover {
@@ -84,7 +86,6 @@ a {
   position: absolute;
   top: 10px;
   right: 5px;
-  color: #6C8A95;
 }
 
 .spinner {
@@ -148,7 +149,6 @@ a {
 }
 
 .ng-modal-overlay {
-  /* A dark translucent div that covers the whole screen */
   position: fixed;
   z-index:9999;
   top: 0px;
@@ -159,7 +159,6 @@ a {
   opacity: 0.8;
 }
 .ng-modal-dialog {
-  /* A centered div above the overlay with a box shadow. */
   z-index:10000;
   position: fixed;
   width: 50%;
