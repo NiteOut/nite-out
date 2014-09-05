@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nite-out.services', [])
+angular.module('nite-out.mainServices', [])
 
 .factory('Search', [function(){
   var current = '';
@@ -14,8 +14,10 @@ angular.module('nite-out.services', [])
 
 .factory('Main', [function(){
   var user = '';
+  var cart = [];
 
   return {
     user: user,
+    cart: cart
   };
 }]);

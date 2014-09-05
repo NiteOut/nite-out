@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('nite-out.main', [
-  'ui.router',
-  'nite-out.services'
+  'ui.router'
   ])
 
 .config(['$stateProvider', function($stateProvider) {

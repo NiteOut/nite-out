@@ -132,3 +132,7 @@ a {
     -webkit-transform: scaleY(1.0);
   }
 }
+
+.cart {
+  color: red;
+}

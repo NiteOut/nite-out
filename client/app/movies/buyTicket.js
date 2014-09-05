@@ -16,9 +16,9 @@ angular.module('nite-out.buyTicket', ['ui.router'])
   $scope.time = Movies.selectedTime;
 
   $scope.addToCart = function(input) {
-    Movies.cart.push({event: Movies.selectedMovie.name,
+    Main.cart.push({event: Movies.selectedMovie.name,
                       time: Movies.selectedTime,
                       numTickets: input});
-    $state.go('main.cart');
+    $state.go('main');
   };
 }]);

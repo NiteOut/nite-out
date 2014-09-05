@@ -2,6 +2,7 @@
 
 angular.module('nite-out', [
   'nite-out.main',
+  'nite-out.mainServices',
   'nite-out.auth',
   'nite-out.authServices',
   'nite-out.movies',
@@ -65,10 +66,10 @@ angular.module('nite-out', [
   };
 })
 
-// .directive('niteOutCart', function() { //directive for future use
-//   return {
-//     restrict: 'EA',
-//     replace: true,
-//     templateUrl: 'app/cart/cart.html'
-//   };
-// });
+.directive('cart', function() { 
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'app/cart/cart.html'
+  };
+});
