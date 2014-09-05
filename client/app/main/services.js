@@ -16,8 +16,17 @@ angular.module('nite-out.mainServices', [])
   var user = '';
   var cart = [];
 
+  var addToCart = function(name, time, numTickets) {
+    cart.push({
+      event: name,
+      time: time,
+      numTickets: numTickets
+    });
+  };
+
   return {
     user: user,
-    cart: cart
+    cart: cart,
+    addToCart: addToCart
   };
 }]);

@@ -27,7 +27,7 @@ angular.module('nite-out.events', ['ui.router'])
     });
 }])
 
-.controller('EventsController', ['$scope', '$state', 'events', 'Mapper', 'Movies', function($scope, $state, events, Mapper, Movies) {
+.controller('EventsController', ['$scope', '$state', 'events', 'Mapper', 'Main', function($scope, $state, events, Mapper, Main) {
   $scope.events = events;
   
   // Fetch our events to update $scope.events
@@ -44,10 +44,7 @@ angular.module('nite-out.events', ['ui.router'])
     Mapper.setCenter(event.address);
   };
 
-  $scope.bookIt = function(selectedEvent){
-    Movies.selectedEvent = selectedEvent;
-    $state.go('main.buyEventTicket');
-  };
+  $scope.bookIt = Main.addToCart;
 
 }]);
 
