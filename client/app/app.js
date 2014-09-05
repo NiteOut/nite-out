@@ -62,7 +62,7 @@ angular.module('nite-out', [
     replace: true,
     templateUrl: 'app/auth/needlogin.tpl.html'
   };
-});
+})
 
 // .directive('niteOutCart', function() { //directive for future use
 //   return {

@@ -17,7 +17,7 @@ angular.module('nite-out.movies', ['ui.router'])      //register the movies modu
         }
       },
       data: {
-        loading: function() {
+        loading: function() {                                          //loading animation
           var el = angular.element(document.getElementById('main'));
           el.html(
             '<div class="spinner"><div class="rect1"></div>' +

@@ -16,8 +16,6 @@ angular.module('nite-out.cart', ['ui.router'])
   $scope.stuffInCart = Movies.cart;
   console.log(Movies);
 
-
-
 }]);
 
 
