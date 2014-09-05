@@ -12,6 +12,7 @@ angular.module('nite-out.map', ['ui.router','google-maps'])
     });
 })
 
+// controller is for development purposes only
 .controller('mapController', function($scope, Mapper){
   $scope.places = [];
 
