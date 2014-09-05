@@ -12,9 +12,7 @@ angular.module('nite-out.cart', ['ui.router'])
 }])
 
 .controller('cartController', ['$scope', '$state', 'Movies', 'Events', function($scope, $state, Movies, Events){
-  console.log(Events);
   $scope.stuffInCart = Movies.cart;
-  console.log(Movies);
 
 }]);
 

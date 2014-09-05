@@ -13,6 +13,7 @@ angular.module('nite-out', [
   'nite-out.mapFactory',
   'nite-out.events',
   'nite-out.eventFactory',
+  'nite-out.buyEventTicket',
   'nite-out.restaurants',
   'nite-out.restaurantFactory',
   'ui.router'
