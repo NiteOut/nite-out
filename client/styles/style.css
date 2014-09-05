@@ -70,6 +70,7 @@ a {
 }
 
 .home-button {
+  font-size: .8em;
   padding: 5px;
   border: 1px solid #6C8A95;
 }
@@ -81,7 +82,7 @@ a {
 
 .user-status {
   position: absolute;
-  top: 0px;
+  top: 10px;
   right: 5px;
   color: #6C8A95;
 }
@@ -144,6 +145,7 @@ a {
 
 #cart {
   overflow: auto;
+}
 
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
@@ -170,9 +172,9 @@ a {
   box-shadow: 4px 4px 80px #000;
 }
 .ng-modal-dialog-content {
+  text-align: center;
   padding:10px;
   color: #6C8A95;
-  text-align: left;
 }
 
 .ng-modal-dialog-content input{
