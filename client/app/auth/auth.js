@@ -2,22 +2,20 @@
 
 angular.module('nite-out.auth', ['ui.router'])
 
-.controller('AuthController', ['$scope', '$state', 'AuthRequests', 'ngDialog', function($scope, $state, AuthRequests, ngDialog) {
+.controller('AuthController', ['$scope', '$state', 'AuthRequests', function($scope, $state, AuthRequests, ngDialog) {
+  $scope.loginShown = false;
+  $scope.signupShown = false;
+
+  $scope.toggleLogin = function() {
+    $scope.loginShown = !$scope.loginShown;
+  };
+  
+  $scope.toggleSignup = function() {
+    $scope.signupShown = !$scope.signupShown;
+  };
+
   $scope.userInfo = {};
-
   $scope.loginStatus = AuthRequests.resolved;
-
-  $scope.loginPage = function() {
-    ngDialog.open({
-      template: 'app/auth/loginPage.html'
-    });
-  };
-
-  $scope.signupPage = function() {
-    ngDialog.open({
-      template: 'signupPage.html'
-    });
-  };
 
   $scope.postSignupData = function(data) {
     AuthRequests.signup(data)

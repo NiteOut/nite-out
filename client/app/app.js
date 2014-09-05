@@ -16,7 +16,6 @@ angular.module('nite-out', [
   'nite-out.eventFactory',
   'nite-out.restaurants',
   'nite-out.restaurantFactory',
-  'ngDialog',
   'ui.router'
 ])
 
@@ -49,7 +48,6 @@ angular.module('nite-out', [
   };
 }])
 
-// if logged in, then use this directive
 .directive('loggedin', function() {
   return {
     restrict: 'EA',
@@ -71,5 +69,25 @@ angular.module('nite-out', [
     restrict: 'EA',
     replace: true,
     templateUrl: 'app/cart/cart.html'
+  };
+})
+
+.directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '=',
+      action: '&',
+    },
+    replace: true, // Replace with the template below
+    link: function(scope, element, attrs) {
+      scope.userInfo = {};
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    templateUrl: function(tElement, tAttrs) {
+      return tAttrs.templateUrl;
+    }
   };
 });
