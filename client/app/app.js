@@ -3,6 +3,7 @@
 angular.module('nite-out', [
   'nite-out.main',
   'nite-out.mainServices',
+  'nite-out.checkout',
   'nite-out.auth',
   'nite-out.authServices',
   'nite-out.movies',

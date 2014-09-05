@@ -22,7 +22,7 @@ angular.module('nite-out.mainServices', [])
       time: time,
       numTickets: numTickets
     });
-    $state.go('main');
+    $state.go('main.shopping');
   };
 
   return {
