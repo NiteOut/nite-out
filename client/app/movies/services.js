@@ -24,7 +24,7 @@ angular.module('nite-out.movieFactory', [])
           phone: item.phoneNumber,
           address: item.address,
           movies: item.movies,
-          icon: '/assets/numberedMarkers/number_'+(index+1)+'.png',
+          icon: '/assets/numberedMarkers/number_'+(index+1)+'.png'
         };
         theaters.push(theater);
       });
