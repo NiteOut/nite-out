@@ -24,7 +24,7 @@ angular.module('nite-out.main', [
     if (choice === 'music' || choice === 'sports') {
       $state.go('main.events');
     } else {
-      $state.go('main.' + choice);
+      $state.go('main.' + choice, {}, {reload:true});
     }
   };
 }]);

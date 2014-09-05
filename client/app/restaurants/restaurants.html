@@ -4,7 +4,6 @@
       <markers models="restaurants" coords="'coords'" fit="'true'"></markers>
     </google-map>
   </center>
-  <button ng-click="restaurants.fetched = !restaurants.fetched">{{restaurants.fetched}}</button>
 <div class="event" ng-repeat="restaurant in restaurants">
   <div ng-click="setCenter(restaurant)">
     <a href="{{restaurant.url}}"><img class="logo" src="assets/opentable.png" /></a>
