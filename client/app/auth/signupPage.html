@@ -4,7 +4,7 @@
     <div class="ng-modal-close" ng-click="hideModal()">X</div>
     <div class="ng-modal-dialog-content">
       <h3>Signup</h3>
-      <form ng-submit="action({userInfo: userInfo}) hideModal()">
+      <form ng-submit="action({userInfo: userInfo}); hideModal()">
         <div>Email:</br><input type="email" ng-model="userInfo.email" required></div>
         <div>Password:</br><input type="password" ng-model="userInfo.password" required></div>
         <div>First Name:</br><input type="text" ng-model="userInfo.first" required></div>
