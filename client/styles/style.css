@@ -65,8 +65,16 @@ h1, h3{
   color: #6C8A95;
 }
 
-a {
+/*a {
   color: #6C8A95;
+}
+*/
+.cart, .checkout, .shopping {
+  color: red;
+}
+
+#cart {
+  overflow: auto;
 }
 
 .home-button {
@@ -138,14 +146,6 @@ a {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
-}
-
-.cart, .checkout, .shopping {
-  color: red;
-}
-
-#cart {
-  overflow: auto;
 }
 
 .ng-modal-overlay {
