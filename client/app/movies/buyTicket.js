@@ -11,7 +11,14 @@ angular.module('nite-out.buyTicket', ['ui.router'])
     });
 }])
 
-.controller('buyTicketController', ['$scope', 'Movies', function($scope, Movies){
+.controller('buyTicketController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
   $scope.movie = Movies.selectedMovie;
   $scope.time = Movies.selectedTime;
+
+  $scope.addToCart = function(input) {
+    Movies.cart.push({event: Movies.selectedMovie.name,
+                      time: Movies.selectedTime,
+                      numTickets: input});
+    $state.go('main.cart');
+  };
 }]);

@@ -27,7 +27,7 @@ angular.module('nite-out.events', ['ui.router'])
     });
 }])
 
-.controller('EventsController', ['$scope', 'events', 'Mapper', function($scope, events, Mapper) {
+.controller('EventsController', ['$scope', '$state', 'events', 'Mapper', 'Movies', function($scope, $state, events, Mapper, Movies) {
   $scope.events = events;
   
   // Fetch our events to update $scope.events
@@ -42,6 +42,11 @@ angular.module('nite-out.events', ['ui.router'])
   $scope.setCenter = function(event){
     // async Geocoder API call
     Mapper.setCenter(event.address);
+  };
+
+  $scope.bookIt = function(selectedEvent){
+    Movies.selectedEvent = selectedEvent;
+    $state.go('main.buyEventTicket');
   };
 
 }]);

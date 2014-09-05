@@ -6,6 +6,7 @@ angular.module('nite-out.movieFactory', [])
   var theaters = [];
   var movies = [];
   var shows = [];
+  var cart = [];
 
   var getTheaters = function(zipcode) {
     angular.copy([], theaters);
@@ -49,6 +50,7 @@ angular.module('nite-out.movieFactory', [])
     theaters: theaters,
     movies: movies,
     shows: shows,
-    getTheaters: getTheaters
+    getTheaters: getTheaters,
+    cart:  cart
   };
 }]);

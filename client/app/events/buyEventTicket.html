@@ -1,8 +1,9 @@
 <h3>Movies</h3>
   <div class="event">
     <div class="title">
-      How many tickets for {{name}} @ {{time}}?
-
+      How many tickets for:
+      <br/>
+      {{event}} @ {{time}}?
       <form ng-submit="addToCart(input)" novalidate>
         <input class="ticket-box" type="text" ng-model="input" autofocus placeholder="Enter quantity here"/>
       </form>
