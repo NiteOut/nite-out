@@ -11,7 +11,7 @@ angular.module('nite-out.buyTicket', ['ui.router'])
     });
 }])
 
-.controller('buyTicketController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
+.controller('buyTicketController', ['$scope', '$state', 'Main', 'Movies', function($scope, $state, Main, Movies){
   $scope.movie = Movies.selectedMovie;
   $scope.time = Movies.selectedTime;
 
