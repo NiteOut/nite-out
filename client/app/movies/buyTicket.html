@@ -2,7 +2,10 @@
   <div class="event">
     <div class="title">
       How many tickets for {{movie.name}} @ {{time}}?
-      
+
+      <form ng-submit="addToCart(input)" novalidate>
+        <input class="ticket-box" type="text" ng-model="input" autofocus/>
+      </form>
     </div>
-    <button class="checkCart" ng-click="toCart()">Check cart</button>
+    <!-- <button class="addtoCart" ng-click="addToCart()">Check cart</button> -->
   </div>
