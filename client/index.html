@@ -11,7 +11,6 @@
 <body ng-app='nite-out'>
   <h1 ui-sref="main">NiteOut</h1>
 
-  <!-- NG-IF not updating when the $scope.loginStatus is updated -->
   <div class="user-status" ng-controller="AuthController">
     <needlogin ng-if="!loginStatus[0]"></needlogin>
     <loggedin ng-if="loginStatus[0]"></loggedin>
@@ -50,6 +49,7 @@
   <script src="app/movies/services.js"></script>
   <script src="app/movies/showtimes.js"></script>
   <script src="app/cart/cart.js"></script>
+  <script src="app/cart/mycart.js"></script>
   <script src="app/main/main.js"></script>
   <script src="app/main/services.js"></script>
   <script src="app/app.js"></script>

@@ -8,7 +8,7 @@ angular.module('nite-out.eventFactory', [])
 
   var getEvents = function(zipcode, category) {
     // Events array is spliced in order to clear it of previous events.
-    events.splice(0);
+    angular.copy([], events);
 
     // Conduct our api call handled by the server.
     // TODO: Handle the entire api call on the client-side.
@@ -32,6 +32,7 @@ angular.module('nite-out.eventFactory', [])
           date: item.event.start_date,
           latitude: item.event.venue.latitude,
           longitude: item.event.venue.longitude,
+          icon: '/assets/numberedMarkers/number_'+(index+1)+'.png'
         };
         events.push(event);
       });

@@ -1,19 +1,7 @@
 'use strict';
 
-angular.module('nite-out.cart', ['ui.router'])
-
-// .config(['$stateProvider', function($stateProvider) {
-//   $stateProvider
-//     .state('cart', {
-//       url: '/cart',
-//       templateUrl: 'app/cart/cart.html',
-//       controller: 'cartController'
-//     });
-// }])
+angular.module('nite-out.cart', [])
 
 .controller('cartController', ['$scope', '$state', 'Main', function($scope, $state, Main){
   $scope.cart = Main.cart;
-  $scope.checkout = function() {
-    $state.go('main.checkout');
-  };
 }]);
