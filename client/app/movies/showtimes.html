@@ -1,7 +1,7 @@
 <h3>Showtimes</h3>
 <div class="event" ng-repeat="movie in movies">
   <div class="title">{{movie.name}}</div>
-    <span ng-repeat="showtime in movie.showtimes" ng-click="buyTickets(movie, showtime, 2)">
+    <span ng-repeat="showtime in movie.showtimes" ng-click="buyTickets(movie.name, showtime, 2)">
       {{showtime}}
     </span>
 </div>

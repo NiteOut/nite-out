@@ -12,6 +12,6 @@ angular.module('nite-out.cart', ['ui.router'])
 // }])
 
 .controller('cartController', ['$scope', '$state', 'Main', function($scope, $state, Main){
-  $scope.stuffInCart = Main.cart;
+  $scope.cart = Main.cart;
 
 }]);

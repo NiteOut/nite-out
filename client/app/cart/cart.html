@@ -1,4 +1,7 @@
 <div class="cart">
   <div>Cart</div>
-  {{ stuffInCart }} 
+  <div ng-repeat="item in cart">
+    <div>{{item.event}}<span> #: {{item.numTickets}}</span></div>
+    <span>{{item.time}}</span>
+  </div>
 </div>
