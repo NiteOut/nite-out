@@ -136,3 +136,7 @@ a {
 .cart, .checkout, .shopping {
   color: red;
 }
+
+#cart {
+  overflow: auto;
+}
