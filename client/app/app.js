@@ -2,18 +2,18 @@
 
 angular.module('nite-out', [
   'nite-out.main',
+  'nite-out.mainServices',
+  'nite-out.checkout',
   'nite-out.auth',
   'nite-out.authServices',
   'nite-out.movies',
   'nite-out.movieFactory',
   'nite-out.showtimes',
-  'nite-out.buyTicket',
   'nite-out.cart',
   'nite-out.map',
   'nite-out.mapFactory',
   'nite-out.events',
   'nite-out.eventFactory',
-  'nite-out.buyEventTicket',
   'nite-out.restaurants',
   'nite-out.restaurantFactory',
   'ui.router'
@@ -65,10 +65,10 @@ angular.module('nite-out', [
   };
 })
 
-// .directive('niteOutCart', function() { //directive for future use
-//   return {
-//     restrict: 'EA',
-//     replace: true,
-//     templateUrl: 'app/cart/cart.html'
-//   };
-// });
+.directive('cart', function() { 
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'app/cart/cart.html'
+  };
+});

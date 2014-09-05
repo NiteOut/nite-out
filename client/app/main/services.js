@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nite-out.services', [])
+angular.module('nite-out.mainServices', [])
 
 .factory('Search', [function(){
   var current = '';
@@ -12,10 +12,22 @@ angular.module('nite-out.services', [])
   };
 }])
 
-.factory('Main', [function(){
+.factory('Main', ['$state', function($state){
   var user = '';
+  var cart = [];
+
+  var addToCart = function(name, time, numTickets) {
+    cart.push({
+      event: name,
+      time: time,
+      numTickets: numTickets
+    });
+    $state.go('main.shopping');
+  };
 
   return {
     user: user,
+    cart: cart,
+    addToCart: addToCart
   };
 }]);

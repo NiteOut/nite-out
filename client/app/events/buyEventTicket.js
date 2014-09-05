@@ -11,14 +11,15 @@ angular.module('nite-out.buyEventTicket', ['ui.router'])
     });
 }])
 
-.controller('buyEventTicketController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
-  $scope.event = Movies.selectedEvent.title;
-  $scope.time = Movies.selectedEvent.date;
+// .controller('buyEventTicketController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
+//   $scope.event = Movies.selectedEvent.title;
+//   $scope.time = Movies.selectedEvent.date;
 
-  $scope.addToCart = function(input) {
-    Movies.cart.push({event: Movies.selectedEvent.title,
-                      time: Movies.selectedEvent.date,
-                      numTickets: input});
-    $state.go('main.cart');
-  };
-}]);
+//   $scope.addToCart = function(input) {
+//     console.log(input)
+//   //   Main.cart.push({event: Movies.selectedEvent.title,
+//   //                     time: Movies.selectedEvent.date,
+//   //                     numTickets: input});
+//   //   $state.go('main.cart');
+//   // };
+// }]);

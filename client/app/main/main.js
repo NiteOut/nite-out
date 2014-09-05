@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('nite-out.main', [
-  'ui.router',
-  'nite-out.services'
+  'ui.router'
   ])
 
 .config(['$stateProvider', function($stateProvider) {
@@ -25,7 +24,7 @@ angular.module('nite-out.main', [
     if (choice === 'music' || choice === 'sports') {
       $state.go('main.events');
     } else {
-      $state.go('main.' + choice);
+      $state.go('main.' + choice, {}, {reload:true});
     }
   };
 }]);

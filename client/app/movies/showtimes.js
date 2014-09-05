@@ -11,15 +11,11 @@ angular.module('nite-out.showtimes', ['ui.router'])
     });
 }])
 
-.controller('showtimesController', ['$scope', '$state', 'Movies', function($scope, $state, Movies){
-  console.log(Movies);
-  $scope.moviesStuff = Movies.selected.movies; 
+.controller('showtimesController', ['$scope', '$state', 'Movies', 'Main', function($scope, $state, Movies, Main){
+  
+  $scope.movies = Movies.selected.movies; 
 
-  $scope.buyTicket = function(movie, showtime) {
-    Movies.selectedMovie = movie;
-    Movies.selectedTime = showtime;
-    $state.go('main.buyTicket');
-  };
+  $scope.buyTickets = Main.addToCart;
 
 }]);
 
