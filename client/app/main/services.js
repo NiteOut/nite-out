@@ -12,7 +12,7 @@ angular.module('nite-out.mainServices', [])
   };
 }])
 
-.factory('Main', [function(){
+.factory('Main', ['$state', function($state){
   var user = '';
   var cart = [];
 
@@ -22,6 +22,7 @@ angular.module('nite-out.mainServices', [])
       time: time,
       numTickets: numTickets
     });
+    $state.go('main');
   };
 
   return {

@@ -8,13 +8,11 @@ angular.module('nite-out', [
   'nite-out.movies',
   'nite-out.movieFactory',
   'nite-out.showtimes',
-  'nite-out.buyTicket',
   'nite-out.cart',
   'nite-out.map',
   'nite-out.mapFactory',
   'nite-out.events',
   'nite-out.eventFactory',
-  'nite-out.buyEventTicket',
   'nite-out.restaurants',
   'nite-out.restaurantFactory',
   'ui.router'
