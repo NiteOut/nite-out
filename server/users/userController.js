@@ -28,7 +28,6 @@ module.exports = {
               // The password is a match, send back appropriate header
               // to client application, tokening will be handle by client.
               var token = jwt.encode(user, 'secret');
-              user.set({token: token}).save();
               res.json({token: token, user: user.get('first_name')});
             } else {
               // Unauthorized request status code sent back to client.
