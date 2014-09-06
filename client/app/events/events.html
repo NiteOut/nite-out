@@ -1,11 +1,11 @@
 <h3>Events</h3>
   <center>
     <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-      <markers models="events" coords="'self'" fit="'true'" icon="'icon'"></markers>
+      <markers models="events" coords="'self'" fit="'true'" icon="'icon'" control="events.control" events="events.events"></markers>
     </google-map>
   </center>
 <div class="event" ng-repeat="event in events">
-  <div ng-click="setCenter(event)" ng-mouseover="do(event)">
+  <div ng-click="setCenter(event)">
     <a href="{{event.url}}"><img class="logo" src="assets/eventbrite.png" /></a>
     <span class="title">{{event.id}}. {{event.title}}</span></br>
     <span class="time">{{event.date | date:'medium'}}</span></br>

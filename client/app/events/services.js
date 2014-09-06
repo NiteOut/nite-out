@@ -31,8 +31,7 @@ angular.module('nite-out.eventFactory', [])
           url: item.event.url,
           date: new Date(item.event.start_date), // cast string into JS Date object
           latitude: item.event.venue.latitude,
-          longitude: item.event.venue.longitude,
-          icon: '/assets/numberedMarkers/number_'+(index+1)+'.png'
+          longitude: item.event.venue.longitude
         };
         events.push(event);
       });

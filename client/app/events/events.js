@@ -29,14 +29,15 @@ angular.module('nite-out.events', ['ui.router'])
 
 .controller('EventsController', ['$scope', '$state', 'events', 'Mapper', 'Main', function($scope, $state, events, Mapper, Main) {
   $scope.events = events;
-  
+
   // Fetch our events to update $scope.events
-  
+  $scope.events = Mapper.makeMarkersOf(events);
 
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup
   // for changing options go to: https://angular-ui.github.io/angular-google-maps/#!/api
   $scope.map = Mapper.init;
+  // adds properties to events to initialize google-map markers directive and let Mapper keep track of markers
 
   // setting map options through the google-map directive interface
   $scope.setCenter = function(event){

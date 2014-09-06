@@ -16,12 +16,14 @@ angular.module('nite-out.mapFactory', [])
   var pointOfInterest = null;
 
   var gMap = null;
+  var gMarkers = [];
 
   // setup options for the angular-google-maps directive
   // needs to be to be implemented in a controller that has angular-google-map in it's scope
   var init = {
     // each property has to be assigned to it's corresponding attribute in the directive
     // 'center' is required
+    // 'center' should be overwritten to something more relevant per controller'
     center: {
         // Hack Reactor
         latitude: 37.7835565,
@@ -87,11 +89,30 @@ angular.module('nite-out.mapFactory', [])
     }
   };
 
+  // returns original array of object where each objects is modified to be a model for google map directive
+  // and each marker produced is cached by Mapper.
+  var makeMarkersOf = function(places){
+    // empty gMarkers for a new set
+    gMarkers = {};
+    angular.forEach(places, function(place, index){
+      place.icon = place.icon ||'/assets/numberedMarkers/number_'+(place.id)+'.png';
+      gMarkers[place.id] = place;
+    });
+    places.events = {
+      click: function(gMarker, eventName, model){
+        console.log('marker key',gMarker.key, 'model id:', model.id, 'event', eventName);
+      }
+    };
+    places.control = {};
+    return places;
+  }
+
   return {
     init: init,
     gMap: gMap,
     setCenter: setCenter,
-    getLatLng: getLatLng
+    getLatLng: getLatLng,
+    makeMarkersOf: makeMarkersOf
   };
 
 }]);
