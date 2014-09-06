@@ -43,9 +43,16 @@ h1, h3{
   font-size: 1.2em;
 }
 
-.search-box{
-  width: 80%;
+.search-box {
+  width: 70%;
   font-size: 1em;
+}
+
+.select-box {
+  color: #6C8A95;
+  font-size: 1em;
+  background: transparent;
+  border: none;
 }
 
 .title {
