@@ -1,10 +1,12 @@
 <div class="cart">
-  <div>Cart</div>
-  <div ng-repeat="item in cart">
-    <div>{{item.event}}<span> #: {{item.numTickets}}</span></div>
-    <span>{{item.time}}</span>
+  <h3>Cart</h3>
+  <div ng-repeat="item in cart" class="cart-item">
+    <div>{{item.event}}</div>
+    <div># of Tickets: {{item.numTickets}}</div>
+    <div>{{item.time}}</div>
   </div>
-
-  <a class="home-button" ui-sref="main.mycart">Edit Cart</a>
-  <a class="home-button" ui-sref="main.checkout">Checkout</a>
+  <div>
+    <a class="home-button" ui-sref="main.mycart">Edit Cart</a>
+    <a class="home-button" ui-sref="main.checkout">Checkout</a>
+  </div>
 </div>

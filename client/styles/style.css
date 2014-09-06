@@ -1,5 +1,6 @@
 body {
   background-color: #202020;
+  color: #6C8A95;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -7,10 +8,12 @@ body {
   height: 400px;
   width: 400px;
 }
+
 .item-text {
   color: blue;
   cursor: pointer;
 }
+
 #google-map div {
   border-style: none;
 }
@@ -65,16 +68,12 @@ h1, h3{
   color: #6C8A95;
 }
 
-/*a {
-  color: #6C8A95;
-}
-*/
-.cart, .checkout, .shopping {
-  color: red;
+.cart {
+  height: 100%;
 }
 
-#cart {
-  overflow: auto;
+.cart-item {
+  color: #ED5824;
 }
 
 .home-button {
