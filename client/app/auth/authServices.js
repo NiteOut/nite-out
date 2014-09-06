@@ -2,7 +2,7 @@
 
 angular.module('nite-out.authServices',[])
 
-.factory('AuthRequests', ['$http', '$window', '$state', function($http, $window, $state) {
+.factory('AuthRequests', ['$http', '$window', 'Main', function($http, $window, Main) {
   var setToken = function(token) {
     $window.localStorage.setItem('nite-out.user', token);
   };
@@ -18,9 +18,9 @@ angular.module('nite-out.authServices',[])
       data: userData
     })
     .success(function(res) {
+      Main.user = res.user;
       setToken(res.token);
       resolved.push(true);
-      $state.go('main');
     });
   };
 
@@ -33,9 +33,9 @@ angular.module('nite-out.authServices',[])
       params: userData
     })
     .success(function(res) {
+      Main.user = res.user;
       setToken(res.token);
       resolved.push(true);
-      $state.go('main');
     });
   };
 

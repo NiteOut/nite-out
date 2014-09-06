@@ -2,15 +2,13 @@
   <div class="search-bar">
     <form ng-submit="conductSearch(input, type)" novalidate>
       <input class="search-box" type="text" ng-model="input" required autofocus placeholder="Enter Zipcode"/>
-      <select class="select-box" ng-model="type" required>
-        <option value="movies" default>Movies</option>
-        <option value="music">Concerts</option>
-        <option value="restaurants">Restaurants</option>
-        <option value="sports">Sports</option>
+      <select
+        class="select-box"
+        ng-init="type = options[0]"
+        ng-model="type"
+        ng-options="option.name for option in options">
       </select>
     </form>
   </div>
   <div id="main" ui-view></div>
-
 </div>
-

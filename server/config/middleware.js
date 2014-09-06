@@ -1,3 +1,5 @@
+'use strict';
+
 //////////////////////////////////////////
 // All middleware installation and router
 // injection happens here
