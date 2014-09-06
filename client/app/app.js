@@ -49,13 +49,16 @@ angular.module('nite-out', [
   };
 }])
 
-.directive('loggedin', function() {
+.directive('loggedin', ['Main', function(Main) {
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'app/auth/loggedin.tpl.html'
+    templateUrl: 'app/auth/loggedin.tpl.html',
+    link: function(scope) {
+      scope.user = Main.user;
+    }
   };
-})
+}])
 
 .directive('needlogin', function() {
   return {
