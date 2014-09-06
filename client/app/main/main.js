@@ -39,12 +39,12 @@ angular.module('nite-out.main', [
 
     // Handle redirecting based on appropriate search
     Search.current = search;
-    Search.type = choice;
+    Search.type = choice.value;
     $scope.input = '';
-    if (choice === 'music' || choice === 'sports') {
+    if (choice.value === 'music' || choice.value === 'sports') {
       $state.go('main.events');
     } else {
-      $state.go('main.' + choice, {}, {reload:true});
+      $state.go('main.' + choice.value, {}, {reload:true});
     }
   };
 }]);
