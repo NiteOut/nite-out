@@ -49,9 +49,10 @@ h1, h3{
 }
 
 .select-box {
+  cursor:pointer;
   color: #6C8A95;
-  font-size: .7em;
-  vertical-align: center;
+  text-align: center;
+  font-size: .8em;
   background: transparent;
   border: none;
 }
