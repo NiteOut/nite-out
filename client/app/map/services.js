@@ -77,13 +77,9 @@ angular.module('nite-out.mapFactory', [])
 
   };
 
-  var setCenter = function(addressString){
+  var setCenter = function(geolocation){
     if(gMap){
-      getLatLng(addressString).then(function (geolocation){
-        gMap.setCenter(geolocation);
-      });
-    } else {
-      alert('wait for google map tiles to load entirely');
+      gMap.setCenter(geolocation);
     }
   };
 

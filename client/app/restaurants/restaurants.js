@@ -47,7 +47,8 @@ angular.module('nite-out.restaurants', ['ui.router'])
   // setting map options through the google-map directive interface
   $scope.setCenter = function(restaurant){
     // async Geocoder API call
-    Mapper.setCenter(restaurant.address);
+    console.log(restaurant.coords);
+    Mapper.setCenter(restaurant.coords);
   };
 
 }]);
