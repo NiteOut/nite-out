@@ -50,7 +50,8 @@ h1, h3{
 
 .select-box {
   color: #6C8A95;
-  font-size: 1em;
+  font-size: .7em;
+  vertical-align: center;
   background: transparent;
   border: none;
 }

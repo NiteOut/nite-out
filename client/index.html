@@ -10,7 +10,7 @@
 </head>
 <body ng-app='nite-out'>
   <h1 ui-sref="main">NiteOut</h1>
-
+  {{user}}
   <div class="user-status" ng-controller="AuthController">
     <needlogin ng-if="!loginStatus[0]"></needlogin>
     <loggedin ng-if="loginStatus[0]"></loggedin>
