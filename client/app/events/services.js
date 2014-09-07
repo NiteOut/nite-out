@@ -7,7 +7,6 @@ angular.module('nite-out.eventFactory', [])
   var events = [];
 
   var getEvents = function(zipcode, category) {
-    // Events array is spliced in order to clear it of previous events.
     angular.copy([], events);
 
     // Conduct our api call handled by the server.
