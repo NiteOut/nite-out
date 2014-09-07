@@ -1,7 +1,7 @@
 <h3>Restaurants</h3>
   <center>
-    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-      <markers models="restaurants" coords="'coords'" icon="'icon'" fit="'true'"></markers>
+    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" draggable="true" fit="true" options="map.options" events="map.events">
+      <markers models="restaurants" coords="'coords'" icon="'icon'" fit="'true'" control="restaurants.control" options="'options'" events="restaurants.events"></markers>
     </google-map>
   </center>
 <div class="event" ng-repeat="restaurant in restaurants">

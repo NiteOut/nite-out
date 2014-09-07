@@ -2,7 +2,7 @@
 
 angular.module('nite-out.mapFactory', [])
 
-.factory('Mapper',['$q', function($q, $rootScope){
+.factory('Mapper',['$q', function($q){
 //////////////////////////////////////////////////////////////////////////////////////////
 //  map.html is set to render {{ object.name }} and {{ object.vicinity }} from Mapper.locations via controller.
 //  set Mapper.locations with an array by Mapper.setLocations() or just Mapper.locations = [{}...].
@@ -38,7 +38,6 @@ angular.module('nite-out.mapFactory', [])
 
     options: {
       disableDefaultUI: true,
-      scrollwheel: false,
     },
 
     events: {
@@ -100,19 +99,31 @@ angular.module('nite-out.mapFactory', [])
     angular.forEach(places, function(place, index){
       place.icon = place.icon ||'/assets/numberedMarkers/number_'+(place.id)+'.png';
       place.options = {
-        title: place.title
+        title: place.title || place.name
       };
-      // a property for modal-selection
-      place.selected = false;
     });
     places.events = {
       // google marker specific events
       click: function(gMarker, eventName, model){
-        // model.selected = true;
-        console.log(model.title, model.selected,$parent);
+        var title = model.title || model.name || "Nite-Out";
+        var date = model.date || model.phone || model.phoneNumber || "";
+        var venue = model.venue || "";
+        var address = model.address || "";
+
+        new google.maps.InfoWindow({
+          content: "" +
+            '<div class="info-window">' +
+              '<div>' +
+                '<h3>'+title+'</h3>' +
+                '<span class="time">'+date+'</span></br>' +
+                '<div><h4>'+venue+'</h4></div>' +
+                '<div><h4>'+address+'</h4></div>' +
+              '</div>' +
+            '</div>'
+        }).open(gMap, gMarker);
       }
     };
-    places.control = {};
+    places.control = {}; // usused automagic: https://angular-ui.github.io/angular-google-maps/#!/api
     return places;
   }
 

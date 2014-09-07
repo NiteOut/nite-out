@@ -2,7 +2,7 @@
 
 angular.module('nite-out.movies', ['ui.router'])      //register the movies module with the app.
 
-.config(['$stateProvider', function($stateProvider) { //set up the state 
+.config(['$stateProvider', function($stateProvider) { //set up the state
   $stateProvider
     .state('main.movies', {                           //set state name
       url: '/movies',                                 //set url extension name
@@ -29,10 +29,13 @@ angular.module('nite-out.movies', ['ui.router'])      //register the movies modu
     });
 }])
 
-//movies controller for passing values and functions by reference to the scope of the page. 
+//movies controller for passing values and functions by reference to the scope of the page.
 .controller('MoviesController', ['$scope', '$state', 'theaters', 'Movies', 'Mapper', function($scope, $state, theaters, Movies, Mapper){
-  $scope.map = Mapper.init;                   //add a map that reflects the current lookup
-  $scope.theaters = theaters;                 //add list of theaters for lookup
+  //add a map that reflects the current lookup
+  $scope.map = Mapper.init;
+  // add list of theaters for lookup
+  // Object decorator preps events to initialize google-map markers directive
+  $scope.theaters = Mapper.makeMarkerFriendlyVersionsOf(theaters);
 
   $scope.toShowtimes = function(selected) {   //add function to move to next page with a selected value
     Movies.selected = selected;
@@ -40,4 +43,4 @@ angular.module('nite-out.movies', ['ui.router'])      //register the movies modu
   };
 
 }]);
-  
+

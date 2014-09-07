@@ -1,7 +1,7 @@
 <h3>Events</h3>
   <center>
-    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-      <markers models="events" coords="'self'" fit="'true'" icon="'icon'" control="events.control" options="'options'" events="events.events"></markers>
+    <google-map id="google-map" center="map.center" zoom="map.zoom" control="map.control" draggable="true" options="map.options" events="map.events">
+      <markers models="events" coords="'self'" fit="true" icon="'icon'" control="events.control" options="'options'" events="events.events"></markers>
     </google-map>
   </center>
 <div class="event" ng-repeat="event in events">
@@ -13,5 +13,4 @@
     <div>{{event.address}}</div>
     <a class="home-button" ng-click="bookIt(event.title, event.data, 2)">Book Tickets</a>
   </div>
-  <modal-selection show="event.selected" event="event" template-url="app/map/selection.tpl.html"></modal-selection>
 </div>

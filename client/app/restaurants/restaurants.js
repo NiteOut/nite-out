@@ -31,7 +31,7 @@ angular.module('nite-out.restaurants', ['ui.router'])
 
 .controller('RestaurantsController', ['$scope', 'restaurants', 'Mapper', function($scope, restaurants, Mapper){
   $scope.map = Mapper.init;
-  $scope.restaurants = restaurants;
+  $scope.restaurants = Mapper.makeMarkerFriendlyVersionsOf(restaurants);
 
   // Query Yelp API for more information on our restaurant
   // $scope.getInfo = function() {

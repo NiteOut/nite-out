@@ -94,41 +94,4 @@ angular.module('nite-out', [
       return tAttrs.templateUrl;
     }
   };
-})
-
-// * displays event details in a modal
-// * add directive within the scope of each event
-// * current purpose is to display details per google map marker click event
-//
-// <modal-selection
-//    show="some boolean bound to an event object to toggle modal visibility."
-
-//    template-url="app/map/selection.tpl.html"
-//    >
-// </modal-selection>
-//
-// template expects:
-//    event.title
-//    event.date
-//    event.venue
-//    event.address
-//
-.directive('modalSelection', function(){
-  return {
-    restrict: 'EA',
-    scope: {
-      show: '=',
-      event: '='
-    },
-    replace: true,
-    link: function(scope) {
-      scope.hideModal = function(){
-        scope.show = false;
-      };
-    },
-    templateUrl: function(tElement, tAttrs) {
-      return tAttrs.templateUrl;
-    }
-  };
 });
-
