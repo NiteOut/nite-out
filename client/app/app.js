@@ -68,7 +68,7 @@ angular.module('nite-out', [
   };
 })
 
-.directive('cart', function() { 
+.directive('cart', function() {
   return {
     restrict: 'EA',
     replace: true,

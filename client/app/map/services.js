@@ -22,6 +22,7 @@ angular.module('nite-out.mapFactory', [])
   var init = {
     // each property has to be assigned to it's corresponding attribute in the directive
     // 'center' is required
+    // 'center' should be overwritten to something more relevant per controller'
     center: {
         // Hack Reactor
         latitude: 37.7835565,
@@ -37,7 +38,6 @@ angular.module('nite-out.mapFactory', [])
 
     options: {
       disableDefaultUI: true,
-      scrollwheel: false,
     },
 
     events: {
@@ -87,11 +87,53 @@ angular.module('nite-out.mapFactory', [])
     }
   };
 
+  var select = function(place){
+    if(place.address){
+      setCenter(place.address);
+    }
+  };
+
+  // Object decorator.
+  // returns original array of object where each objects is modified to be a model for google map directive
+  var makeMarkerFriendlyVersionsOf = function(places){
+    angular.forEach(places, function(place, index){
+      place.icon = place.icon ||'/assets/numberedMarkers/number_'+(place.id)+'.png';
+      place.options = {
+        title: place.title || place.name
+      };
+    });
+    places.events = {
+      // google marker specific events
+      click: function(gMarker, eventName, model){
+        var title = model.title || model.name || "Nite-Out";
+        var date = model.date || model.phone || model.phoneNumber || "";
+        var venue = model.venue || "";
+        var address = model.address || "";
+
+        new google.maps.InfoWindow({
+          content: "" +
+            '<div class="info-window">' +
+              '<div>' +
+                '<h3>'+title+'</h3>' +
+                '<span class="time">'+date+'</span></br>' +
+                '<div><h4>'+venue+'</h4></div>' +
+                '<div><h4>'+address+'</h4></div>' +
+              '</div>' +
+            '</div>'
+        }).open(gMap, gMarker);
+      }
+    };
+    places.control = {}; // usused automagic: https://angular-ui.github.io/angular-google-maps/#!/api
+    return places;
+  }
+
   return {
     init: init,
     gMap: gMap,
     setCenter: setCenter,
-    getLatLng: getLatLng
+    getLatLng: getLatLng,
+    makeMarkerFriendlyVersionsOf: makeMarkerFriendlyVersionsOf,
+    select: select
   };
 
 }]);

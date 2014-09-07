@@ -28,23 +28,22 @@ angular.module('nite-out.events', ['ui.router'])
 }])
 
 .controller('EventsController', ['$scope', '$state', 'events', 'Mapper', 'Main', function($scope, $state, events, Mapper, Main) {
-  $scope.events = events;
-  
   // Fetch our events to update $scope.events
-  
+  // Object decorator preps events to initialize google-map markers directive
+  $scope.events = Mapper.makeMarkerFriendlyVersionsOf(events);
 
   // let $scope.map be the initial interface object for the google-map directive
   // Mapper.init is the default object for setup
   // for changing options go to: https://angular-ui.github.io/angular-google-maps/#!/api
   $scope.map = Mapper.init;
 
-  // setting map options through the google-map directive interface
-  $scope.setCenter = function(event){
-    // async Geocoder API call
-    Mapper.setCenter(event.address);
+  $scope.select = function(event){
+    // doesn't do anything but center map around selection
+    Mapper.select(event);
+    // a boolean for modalSelection directive to show/hide
+    event.selected = true;
   };
 
   $scope.bookIt = Main.addToCart;
-
 }]);
 

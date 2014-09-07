@@ -1,7 +1,7 @@
 <h3>Theaters</h3>
 <center>
-  <google-map id="google-map" center="theaters[0].coords" zoom="map.zoom" control="map.control" options="map.options" events="map.events">
-    <markers models="theaters" coords="'coords'" icon="'icon'" options="'options'" fit="true"></markers>
+  <google-map id="google-map" center="theaters[0].coords" zoom="map.zoom" control="map.control" draggable="true" options="map.options" events="map.events">
+    <markers models="theaters" coords="'coords'" icon="'icon'" fit="true" control="theaters.control" options="'options'" events="theaters.events"></markers>
   </google-map>
 </center>
 <div class="event" ng-repeat="theater in theaters" ng-click="toShowtimes(theater)">
