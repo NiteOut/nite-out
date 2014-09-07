@@ -42,9 +42,8 @@ sudo npm install -g bower
 npm install
 bower install
 brew install mysql
-
-mongod
 mysql.server start
+mysqladmin -u root create nite-out
 gulp
 ```
 
