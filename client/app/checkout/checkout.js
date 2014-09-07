@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('nite-out.checkout', ['ui.router'])
 
 .controller('CheckoutController',['Main', '$scope', function(Main, $scope) {

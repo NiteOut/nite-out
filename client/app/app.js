@@ -43,7 +43,7 @@ angular.module('nite-out', [
 
   var checkLoading = function(toState) {
     if (toState.data) {
-      return (toState.data.loading !== undefined || toState.data.loading !== null) && typeof toState.data.loading === "function";
+      return (toState.data.loading !== undefined || toState.data.loading !== null) && typeof toState.data.loading === 'function';
     }
     return false;
   };
