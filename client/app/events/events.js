@@ -2,18 +2,21 @@
 
 angular.module('nite-out.events', ['ui.router'])
 
-// Configure out state using ui.router
+// Configure out state
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider
     .state('main.events', {
       url: '/events',
       templateUrl: 'app/events/events.html',
       resolve: {
+        // The resolve handler is used to ensure that our Events are all returned
+        // from asynchronous call, before our user sees any data.
         events: function(Events, Search) {
           return Events.getEvents(Search.current, Search.type);
         }
       },
       data: {
+        // loading method handles rendering of our loading animation
         loading: function() {
           var el = angular.element(document.getElementById('main'));
           el.html(
