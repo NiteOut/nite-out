@@ -1,6 +1,7 @@
 <div class="cart">
   <h3>Cart</h3>
   <div ng-repeat="item in cart">
+    <a class="home-button logo" ng-click="deleteItem(item)">Delete Item</a>
     <div> - {{item.event}}<span> #: {{item.numTickets}}</span></div>
     <span>{{item.time}}</span>
     <div></div>
