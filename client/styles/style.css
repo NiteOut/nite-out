@@ -101,7 +101,7 @@ h1, h3{
 }
 
 .user-status {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 5px;
 }
