@@ -1,14 +1,18 @@
 <div class="cart">
   <h3>Cart</h3>
-  <div ng-repeat="item in cart" class="cart-item">
-    <div class="title">{{item.event}}</div>
-    <div># of Tickets: {{item.numTickets}}</div>
-    <div>{{item.time}}</div>
-    <br/>
-  </div>
+  <center>
+    <div ng-repeat="item in cart" class="cart-item">
+      <div class="title">{{item.event}}</div>
+      <div># of Tickets: {{item.numTickets}}</div>
+      <div>{{item.time}}</div>
+      <br/>
+    </div>
+  </center>
   </br>
   <div>
-    <a class="home-button" ui-sref="main.mycart">Edit Cart</a>
-    <a class="home-button" ui-sref="main.checkout">Checkout</a>
+    <center>
+      <a class="edit-button" ui-sref="main.mycart">Edit Cart</a>
+      <a class="checkout-button" ui-sref="main.checkout">Checkout</a>
+    </center>
   </div>
 </div>

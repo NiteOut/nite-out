@@ -1,9 +1,18 @@
-<div class="checkout">
+<div>
   <h3>Checkout</h3>
-  <div ng-repeat="items in cart">
-    <div> - {{items.event}}<span> #: {{items.numTickets}}</span></div>
-    <span>{{items.time}}</span>
-    <div></div>
-    <br/>
-  </div>
+
+    <div ng-repeat="items in cart" class="checkout">
+      <div> {{items.event}}<span> <br>
+      # of Tickets: {{items.numTickets}}</span></div>
+      <span>{{items.time}}</span>
+      <div></div>
+      <br/>
+    </div>
+
+
+  <center>
+    <a class="home-button market" ui-sref="markettest">Purchase your Nite-Out!</a>
+  </center>
+
+
 </div>
