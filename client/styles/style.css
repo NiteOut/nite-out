@@ -219,3 +219,8 @@ h1, h3{
   width: 80%;
 }
 
+
+.showtime:hover{
+  border: 1px solid red;
+  color: red;
+}
