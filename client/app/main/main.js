@@ -53,4 +53,3 @@ angular.module('nite-out.main', [
     }
   };
 }]);
-
