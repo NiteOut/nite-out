@@ -18,7 +18,7 @@ body {
   border-style: none;
 }
 
-h1, h3{
+h1, h2, h3{
   font-family: 'Montserrat Alternates', sans-serif;
   text-align: center;
   color: #F0A83A;
@@ -32,6 +32,7 @@ h1, h3{
 
 .event:hover{
   background-color: #4B433D;
+  cursor: pointer;
 }
 
 .container {
@@ -96,8 +97,8 @@ h1, h3{
 }
 
 .home-button:hover {
-  border: 1px solid red;
-  color: red;
+  color: #A9342C;
+  cursor: pointer;
 }
 
 .user-status {
@@ -219,11 +220,9 @@ h1, h3{
   width: 80%;
 }
 
-
-
 .showtime:hover{
-  border: 1px solid red;
-  color: red;
+  color: #A9342C;
+  cursor: pointer;
 }
 
 .edit-button, .checkout-button {
@@ -234,6 +233,18 @@ h1, h3{
   text-decoration: none;
 }
 
+.edit-button:hover, .checkout-button:hover {
+  color: #A9342C;
+  cursor: pointer;
+}
+
+.market {
+  font-size: 1.6em;
+  color: #F0A83A;
+}
+
 .checkout {
+  font-size: 20px;
   position: relative;
+  left: 5%;
 }
