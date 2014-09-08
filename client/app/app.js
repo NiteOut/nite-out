@@ -84,7 +84,8 @@ angular.module('nite-out', [
       url: '=',
       action: '&',
     },
-    replace: true, // Replace with the template below
+    replace: true,
+    // Replace with the template below
     link: function(scope) {
       scope.userInfo = {};
       scope.hideModal = function() {
