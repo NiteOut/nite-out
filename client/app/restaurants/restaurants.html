@@ -6,10 +6,12 @@
   </center>
 <div class="event" ng-repeat="restaurant in restaurants">
   <div ng-click="setCenter(restaurant)">
-    <a href="{{restaurant.url}}" target="_blank"><img class="logo" src="assets/opentable.png"/></a>
+    <!-- Opentable reservation modal -->
+    <img ng-click="showMe = !showMe" class="logo" src="assets/opentable.png" />
     <span class="title" ng-click="setCenter()">{{restaurant.id}}. {{restaurant.name}}</span></br>
     <span class="phone">Phone: {{restaurant.phone}}</span></br>
     <span class="address">Address: {{restaurant.address}}</span></br>
   </div>
+  <modal-dialog show="showMe" url="restaurant.url" template-url="app/restaurants/restaurant.tpl.html"></modal-dialog>
 </div>
 

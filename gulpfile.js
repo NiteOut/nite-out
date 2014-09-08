@@ -18,8 +18,8 @@ gulp.task('concat', function() {
   gulp.src([
     './client/bower_components/angular/angular.js',
     './client/bower_components/angular-ui-router/release/angular-ui-router.js',
-    './client/bower_components/lodash/dist/lodash.underscore.js',
     './client/bower_components/angular-google-maps/dist/angular-google-maps.js',
+    './client/bower_components/lodash/dist/lodash.underscore.js',
     './client/app/**/*.js'
     ])
     .pipe(concat('build.js'))
