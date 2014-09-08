@@ -200,3 +200,9 @@ h1, h3{
   font-weight: bold;
   font-family: 'arial', 'sans-serif';
 }
+
+.shopping-cart {
+  position: fixed;
+  overflow: auto;
+  width: 16%;
+}
