@@ -6,7 +6,7 @@
   </center>
 <div class="event" ng-repeat="restaurant in restaurants">
   <div ng-click="setCenter(restaurant)">
-    <a href="{{restaurant.url}}"><img class="logo" src="assets/opentable.png" /></a>
+    <a href="{{restaurant.url}}" target="_blank"><img class="logo" src="assets/opentable.png"/></a>
     <span class="title" ng-click="setCenter()">{{restaurant.id}}. {{restaurant.name}}</span></br>
     <span class="phone">Phone: {{restaurant.phone}}</span></br>
     <span class="address">Address: {{restaurant.address}}</span></br>
