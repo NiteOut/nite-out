@@ -220,7 +220,17 @@ h1, h3{
 }
 
 
+
 .showtime:hover{
   border: 1px solid red;
   color: red;
 }
+
+.edit-button, .checkout-button {
+  color: #6C8A95;
+  font-size: .8em;
+  padding: 5px;
+  border: 1px solid #6C8A95;
+  text-decoration: none;
+}
+
