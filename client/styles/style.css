@@ -207,7 +207,7 @@ h1, h3{
 .shopping-cart {
   position: fixed;
   overflow: auto;
-  width: 18%;
+  width: 14%;
 }
 
 .modal-iframe {
