@@ -234,3 +234,6 @@ h1, h3{
   text-decoration: none;
 }
 
+.checkout {
+  position: relative;
+}
