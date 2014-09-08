@@ -19,10 +19,10 @@ angular.module('nite-out.checkout', ['ui.router'])
     });
 }])
 
-.controller('CheckoutController',['Main', '$scope', 'Events', '$state', function(Main, $scope, Events, $state) {
+.controller('CheckoutController',['Main', '$scope', 'Search', '$state', function(Main, $scope, Search, $state) {
   $scope.cart = Main.cart;
   $scope.eventGo = function(choice) {
-    Events.choice = choice;
+    Search.type = choice;
     $state.go('main.events');
   }
 }]);
