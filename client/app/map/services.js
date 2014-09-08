@@ -77,13 +77,9 @@ angular.module('nite-out.mapFactory', [])
 
   };
 
-  var setCenter = function(addressString){
+  var setCenter = function(geolocation){
     if(gMap){
-      getLatLng(addressString).then(function (geolocation){
-        gMap.setCenter(geolocation);
-      });
-    } else {
-      alert('wait for google map tiles to load entirely');
+      gMap.setCenter(geolocation);
     }
   };
 
@@ -96,7 +92,7 @@ angular.module('nite-out.mapFactory', [])
   // Object decorator.
   // returns original array of object where each objects is modified to be a model for google map directive
   var makeMarkerFriendlyVersionsOf = function(places){
-    angular.forEach(places, function(place, index){
+    angular.forEach(places, function(place){
       place.icon = place.icon ||'/assets/numberedMarkers/number_'+(place.id)+'.png';
       place.options = {
         title: place.title || place.name
@@ -105,13 +101,13 @@ angular.module('nite-out.mapFactory', [])
     places.events = {
       // google marker specific events
       click: function(gMarker, eventName, model){
-        var title = model.title || model.name || "Nite-Out";
-        var date = model.date || model.phone || model.phoneNumber || "";
-        var venue = model.venue || "";
-        var address = model.address || "";
+        var title = model.title || model.name || 'Nite-Out';
+        var date = model.date || model.phone || model.phoneNumber || '';
+        var venue = model.venue || '';
+        var address = model.address || '';
 
         new google.maps.InfoWindow({
-          content: "" +
+          content: '' +
             '<div class="info-window">' +
               '<div>' +
                 '<h3>'+title+'</h3>' +
@@ -125,7 +121,7 @@ angular.module('nite-out.mapFactory', [])
     };
     places.control = {}; // usused automagic: https://angular-ui.github.io/angular-google-maps/#!/api
     return places;
-  }
+  };
 
   return {
     init: init,

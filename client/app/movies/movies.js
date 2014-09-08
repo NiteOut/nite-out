@@ -1,14 +1,18 @@
 'use strict';
 
-angular.module('nite-out.movies', ['ui.router'])      //register the movies module with the app.
+angular.module('nite-out.movies', ['ui.router'])      // register the movies module with the app.
 
-.config(['$stateProvider', function($stateProvider) { //set up the state
+.config(['$stateProvider', function($stateProvider) {
   $stateProvider
-    .state('main.movies', {                           //set state name
-      url: '/movies',                                 //set url extension name
-      templateUrl: 'app/movies/movies.html',          //set the actual template url
-      controller: 'MoviesController',                 //register the controller for the module
-      resolve: {                                      //gather list of movies from search query
+    .state('main.movies', {                           
+      url: '/movies',                                 
+      templateUrl: 'app/movies/movies.html',          
+      controller: 'MoviesController',                 
+      resolve: {
+        // Resolve allows us to resolve our movies fetch before the
+        // user sees the screen.  Fetching theeaters returns an array of
+        // promises which we can then manipulate and pass to our controller
+        // upon being resolved;       
         theaters: function(Movies, Search) {
           return Movies.getTheaters(Search.current)
           .then(function(list) {
@@ -17,7 +21,9 @@ angular.module('nite-out.movies', ['ui.router'])      //register the movies modu
         }
       },
       data: {
-        loading: function() {                                          //loading animation
+        // Loading method handles the loading animation presented to the user
+        // while waiting for the view to resolve
+        loading: function() {
           var el = angular.element(document.getElementById('main'));
           el.html(
             '<div class="spinner"><div class="rect1"></div>' +
@@ -29,15 +35,16 @@ angular.module('nite-out.movies', ['ui.router'])      //register the movies modu
     });
 }])
 
-//movies controller for passing values and functions by reference to the scope of the page.
+// Movies controller for passing values and functions by reference to the scope of the page.
 .controller('MoviesController', ['$scope', '$state', 'theaters', 'Movies', 'Mapper', function($scope, $state, theaters, Movies, Mapper){
-  //add a map that reflects the current lookup
+  // Add a map that reflects the current lookup
   $scope.map = Mapper.init;
-  // add list of theaters for lookup
+  // Add list of theaters for lookup
   // Object decorator preps events to initialize google-map markers directive
   $scope.theaters = Mapper.makeMarkerFriendlyVersionsOf(theaters);
 
-  $scope.toShowtimes = function(selected) {   //add function to move to next page with a selected value
+  $scope.toShowtimes = function(selected) {
+    // Method to move to next page with a selected value
     Movies.selected = selected;
     $state.go('main.showtimes');
   };

@@ -3,6 +3,7 @@
 angular.module('nite-out.mycart', ['ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
+  // Register our new state within the app.
   $stateProvider
     .state('main.mycart', {
       url: 'mycart',
