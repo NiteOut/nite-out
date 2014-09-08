@@ -36,6 +36,7 @@ angular.module('nite-out.restaurants', ['ui.router'])
 
   // setting map options through the google-map directive interface
   $scope.map = Mapper.init;
+  $scope.showMe = false;
   $scope.restaurants = Mapper.makeMarkerFriendlyVersionsOf(restaurants);
 
   // Query Yelp API for more information on our restaurant

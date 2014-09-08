@@ -168,6 +168,7 @@ h1, h3{
   background-color:#000000;
   opacity: 0.8;
 }
+
 .ng-modal-dialog {
   z-index:10000;
   position: fixed;
@@ -180,6 +181,7 @@ h1, h3{
   background-color: #202020;
   box-shadow: 4px 4px 80px #000;
 }
+
 .ng-modal-dialog-content {
   text-align: center;
   padding:10px;
@@ -189,6 +191,7 @@ h1, h3{
 .ng-modal-dialog-content input{
   width: 60%;
 }
+
 .ng-modal-close {
   position: fixed;
   top: 3px;
@@ -206,3 +209,13 @@ h1, h3{
   overflow: auto;
   width: 18%;
 }
+
+.modal-iframe {
+  width: 95%;
+  height: 400px;
+}
+
+.holder {
+  width: 80%;
+}
+
