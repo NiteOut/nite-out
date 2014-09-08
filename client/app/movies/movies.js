@@ -37,6 +37,7 @@ angular.module('nite-out.movies', ['ui.router'])      // register the movies mod
 
 // Movies controller for passing values and functions by reference to the scope of the page.
 .controller('MoviesController', ['$scope', '$state', 'theaters', 'Movies', 'Mapper', function($scope, $state, theaters, Movies, Mapper){
+  $scope.showMe = false;
   // Add a map that reflects the current lookup
   $scope.map = Mapper.init;
   // Add list of theaters for lookup

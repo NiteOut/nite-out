@@ -1,7 +1,9 @@
 <h3>Showtimes</h3>
 <div class="event" ng-repeat="movie in movies">
+  <img ng-click="showMe = !showMe" class="logo" src="../../assets/youtube.png" />
   <div class="title">{{movie.name}}</div>
     <span class="showtime" ng-repeat="showtime in movie.showtimes" ng-click="buyTickets(movie.name, showtime, 2)">
       {{showtime}}
     </span>
+    <modal-dialog show="showMe" url="'http://www.youtube.com/embed/' + movie.trailer.split('=')[1] + '?autoplay=1'" template-url="app/movies/youtube.tpl.html"></modal-dialog>
 </div>
