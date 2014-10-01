@@ -1,0 +1,56 @@
+<ion-view title="NiteOut">
+  <ion-side-menus>
+
+    <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-dark">
+        <button menu-toggle="left" class="button button-icon icon ion-ios7-cart"></button>
+        <h1 class="title logo">NiteOut</h1>
+        <button class="button button-icon icon ion-log-out" ng-click="showModal()"></button>
+      </ion-header-bar>
+        <map style="display:block;height:300px" center="{{map.center}}" zoom="{{map.zoom}}">
+          <marker position="{{map.center}}" animation="Animation.DROP"></marker>
+        </map>
+        <div>
+          <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Enter a restaraunt, location, or movie here">
+            <a href ng-click="showModal()"><i class="icon ion-ios7-settings-strong placeholder-icon" ></i></a>
+          </label>
+          
+        </div>
+
+        <ion-content class="search-results">
+          <div class="list ">
+            <div ng-repeat="result in searchResults" class="item">
+              <div class="row theater" ng-click="theaterSelected(result)">
+                <div class="col-50"> 
+                  <h2>{{result.name}}</h2> 
+                  <ul class="theater-info">
+                    <li>{{result.address.split(',')[0]}}</li>
+                    <li>{{result.phoneNumber}}</li>
+                  </ul>
+                </div>
+                <div class="col-50 movies">
+                  <ul class="unstyled">
+                    <li ng-repeat="movie in result.movies | limitTo: 4">{{movie.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-content>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Cart</h1>
+      </ion-header-bar>
+      <ion-content>
+        <shopping-cart items="cartItems"></shopping-cart>
+      </ion-content>
+    </ion-side-menu>
+
+  </ion-side-menus>
+</ion-view>

@@ -1,0 +1,100 @@
+.login-view {
+ /* background: url(../img/city.png) no-repeat center center;
+  background-size: cover; */
+  background: #262c31; /* Old browsers */
+  background: -moz-linear-gradient(top, #262c31 0%, #2e3552 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#262c31), color-stop(100%,#2e3552)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #262c31 0%,#2e3552 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #262c31 0%,#2e3552 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #262c31 0%,#2e3552 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #262c31 0%,#2e3552 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262c31', endColorstr='#2e3552',GradientType=0 ); /* IE6-9 */
+}
+
+.login-view:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(140deg, #04192B, #3b42ff);
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  z-index: 50;
+}
+.splash {
+  width: 440px;
+  position: relative;
+  z-index: 20;
+}
+.glass {
+  width: 100%;
+  height: 200px;
+  bottom: 0;
+  z-index: 150;
+  position: absolute;
+  opacity: .9;
+  background: rgba(255,255,255,.22);
+}
+.glass:after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('../img/glass-blur.png'); */
+  background-size: cover;
+  content: ' ';
+  opacity: 1;
+  -webkit-filter: blur(2px);
+}
+.fade {
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: white;
+  position: fixed;
+  opacity: .15;
+  bottom: 0;
+}
+.logo h1 {
+  position: fixed;
+  z-index: 100;
+  margin: 10% 50%;
+  font-family: 'Damion';
+  left: -110px;
+  font-size: 70px;
+  width: 220px;
+  color: #F6F7FD;
+  top: 110px;
+}
+.login-container {
+  width: 100%;
+  bottom: 0;
+  height: 200px;
+  z-index: 200;
+  position: absolute;
+}
+.login-actions {
+  width: 100%;
+  position: absolute;
+}
+.btn {
+  transition: none;
+  background: transparent;
+  border: 1px solid white;
+  margin: 20px 0;
+  color: white;
+  height: 50px;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.42857;
+  border-radius: 3px;
+  width: 100%;
+}
