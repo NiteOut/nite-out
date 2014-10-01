@@ -1,0 +1,22 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Search Settings</h1>
+    <button class="button button-clear button-primary" ng-click="settingsModal.hide()">Done</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">setting </span>
+        <input ng-model="newUser.firstName" type="text">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Setting </span>
+        <input ng-model="newUser.lastName" type="text">
+      </label>
+      <label class="item item-input">
+        <span class="input-label"> setting </span>
+        <input ng-model="newUser.email" type="text">
+      </label>
+    </div>
+  </ion-content>
+</ion-modal-view>
