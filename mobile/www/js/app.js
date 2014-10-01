@@ -49,16 +49,11 @@ angular.module('niteout', [
   $scope.searchResults = [];
 
   Movies
-    .query({zip: 94109}).$promise
+    .query({zip: 94109}).$promise // test zip
     .then(function(data){
       $scope.searchResults = $scope.searchResults.concat(data.results);
     });
 
-  // Food
-  //   .query().$promise
-  //   .then(function(data){
-
-  //   });
   $scope.map = {
     center: 'San Francisco, California'
   };
@@ -72,7 +67,6 @@ angular.module('niteout', [
 
   $scope.showModal = window.showm = function () {
     $scope.settingsModal.show();
-    console.log('open')
   };
 
 
